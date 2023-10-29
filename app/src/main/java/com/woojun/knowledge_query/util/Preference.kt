@@ -1,4 +1,4 @@
-package com.woojun.knowledge_query
+package com.woojun.knowledge_query.util
 
 import android.app.Application
 import android.content.Context

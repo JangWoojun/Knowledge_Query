@@ -1,14 +1,14 @@
-package com.woojun.knowledge_query
+package com.woojun.knowledge_query.main
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.woojun.knowledge_query.databinding.FragmentMyLibraryBinding
+import com.woojun.knowledge_query.databinding.FragmentSettingBinding
 
-class MyLibraryFragment : Fragment() {
-    private var _binding: FragmentMyLibraryBinding? = null
+class SettingFragment : Fragment() {
+    private var _binding: FragmentSettingBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,7 +19,7 @@ class MyLibraryFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMyLibraryBinding.inflate(inflater, container, false)
+        _binding = FragmentSettingBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -35,4 +35,5 @@ class MyLibraryFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }

@@ -1,4 +1,4 @@
-package com.woojun.knowledge_query
+package com.woojun.knowledge_query.intro
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

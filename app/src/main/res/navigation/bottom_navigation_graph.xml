@@ -7,22 +7,22 @@
 
     <fragment
         android:id="@+id/home"
-        android:name="com.woojun.knowledge_query.HomeFragment"
+        android:name="com.woojun.knowledge_query.main.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/myLibrary"
-        android:name="com.woojun.knowledge_query.MyLibraryFragment"
+        android:name="com.woojun.knowledge_query.main.MyLibraryFragment"
         android:label="fragment_my_library"
         tools:layout="@layout/fragment_my_library" />
     <fragment
         android:id="@+id/bookmark"
-        android:name="com.woojun.knowledge_query.BookmarkFragment"
+        android:name="com.woojun.knowledge_query.main.BookmarkFragment"
         android:label="fragment_bookmark"
         tools:layout="@layout/fragment_bookmark" />
     <fragment
         android:id="@+id/setting"
-        android:name="com.woojun.knowledge_query.SettingFragment"
+        android:name="com.woojun.knowledge_query.main.SettingFragment"
         android:label="fragment_setting"
         tools:layout="@layout/fragment_setting" />
 </navigation>

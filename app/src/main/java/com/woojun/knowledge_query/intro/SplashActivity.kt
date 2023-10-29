@@ -1,9 +1,12 @@
-package com.woojun.knowledge_query
+package com.woojun.knowledge_query.intro
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import com.woojun.knowledge_query.util.Preference
+import com.woojun.knowledge_query.R
+import com.woojun.knowledge_query.main.MainActivity
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

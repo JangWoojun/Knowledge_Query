@@ -1,8 +1,9 @@
-package com.woojun.knowledge_query
+package com.woojun.knowledge_query.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.findNavController
+import com.woojun.knowledge_query.R
 import com.woojun.knowledge_query.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

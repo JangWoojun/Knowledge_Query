@@ -1,14 +1,15 @@
-package com.woojun.knowledge_query
+package com.woojun.knowledge_query.main
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.woojun.knowledge_query.databinding.FragmentSettingBinding
+import com.woojun.knowledge_query.databinding.FragmentBookmarkBinding
 
-class SettingFragment : Fragment() {
-    private var _binding: FragmentSettingBinding? = null
+class BookmarkFragment : Fragment() {
+
+    private var _binding: FragmentBookmarkBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,7 +20,7 @@ class SettingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSettingBinding.inflate(inflater, container, false)
+        _binding = FragmentBookmarkBinding.inflate(inflater, container, false)
         return binding.root
     }
 

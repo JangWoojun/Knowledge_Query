@@ -1,4 +1,4 @@
-package com.woojun.knowledge_query
+package com.woojun.knowledge_query.intro
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat.finishAffinity
 import androidx.viewpager2.widget.ViewPager2
+import com.woojun.knowledge_query.main.MainActivity
+import com.woojun.knowledge_query.util.OnboardingRecyclerAdapter
+import com.woojun.knowledge_query.util.PagerItem
+import com.woojun.knowledge_query.util.Preference
+import com.woojun.knowledge_query.R
 import com.woojun.knowledge_query.databinding.FragmentOnboardingBinding
 
 class OnboardingFragment : Fragment() {

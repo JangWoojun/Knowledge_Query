@@ -1,4 +1,4 @@
-package com.woojun.knowledge_query
+package com.woojun.knowledge_query.util
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.woojun.knowledge_query.R
 
 class OnboardingRecyclerAdapter(private val pagerList: ArrayList<PagerItem>): RecyclerView.Adapter<OnboardingRecyclerAdapter.PagerViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagerViewHolder {
