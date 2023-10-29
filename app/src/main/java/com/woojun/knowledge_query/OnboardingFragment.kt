@@ -57,7 +57,9 @@ class OnboardingFragment : Fragment() {
             }
 
             startButton.setOnClickListener {
-
+                Preference.prefs.notFirst()
+                startActivity(Intent(requireContext(), MainActivity::class.java))
+                finishAffinity(requireActivity())
             }
         }
     }
