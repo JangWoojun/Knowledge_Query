@@ -5,13 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.NavOptions
-import androidx.navigation.findNavController
-import com.woojun.knowledge_query.databinding.FragmentStartBinding
+import com.woojun.knowledge_query.databinding.FragmentOnboardingBinding
 
-class StartFragment : Fragment() {
+class OnboardingFragment : Fragment() {
 
-    private var _binding: FragmentStartBinding? = null
+    private var _binding: FragmentOnboardingBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +20,7 @@ class StartFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentStartBinding.inflate(inflater, container, false)
+        _binding = FragmentOnboardingBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -31,15 +29,7 @@ class StartFragment : Fragment() {
 
         binding.apply {
             startButton.setOnClickListener {
-                val navOptions = NavOptions.Builder()
-                    .setPopUpTo(R.id.startFragment, true)
-                    .build()
 
-                view.findNavController().navigate(
-                    R.id.action_startFragment_to_modeChoiceFragment,
-                    null,
-                    navOptions,
-                )
             }
         }
     }
