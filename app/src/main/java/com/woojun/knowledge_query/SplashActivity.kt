@@ -10,9 +10,16 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        Handler().postDelayed({
-            startActivity(Intent(this@SplashActivity, MainActivity::class.java)) // MainActivity 이동
-            finishAffinity()
-        }, 1500)
+        if (Preference.prefs.isFirst()) {
+            Handler().postDelayed({
+                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+                finishAffinity()
+            }, 1500)
+        } else {
+            Handler().postDelayed({
+                startActivity(Intent(this@SplashActivity, IntroActivity::class.java))
+                finishAffinity()
+            }, 1500)
+        }
     }
 }
