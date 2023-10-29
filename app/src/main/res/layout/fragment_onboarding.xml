@@ -8,52 +8,67 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".OnboardingFragment">
 
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/introViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+        android:id="@+id/dots_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:dotsColor="@color/primary"
+        app:dotsCornerRadius="20dp"
+        app:dotsSize="20dp"
+        app:dotsSpacing="4dp"
+        app:dotsStrokeColor="#EAEAFF"
+        app:layout_constraintBottom_toTopOf="@+id/start_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
     <FrameLayout
         android:layout_marginHorizontal="10dp"
         android:id="@+id/frameLayout"
         android:layout_width="390dp"
         android:layout_height="420dp"
-        android:background="@drawable/start_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            android:src="@drawable/onboarding_image1" />
 
     </FrameLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
         android:gravity="center"
         android:orientation="vertical"
-        android:layout_marginTop="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/start_button"
         app:layout_constraintTop_toBottomOf="@+id/frameLayout"
         tools:layout_editor_absoluteX="24dp">
 
         <TextView
+            android:id="@+id/title_text"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:fontFamily="@font/poppins_bold"
             android:gravity="center"
-            android:text="긴 글에 지쳤다면?"
             android:textColor="@color/white"
             android:textSize="32sp" />
 
         <TextView
+            android:id="@+id/subject_text"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/poppins_reqular"
             android:gravity="center"
-            android:text="지식 쿼리로 Ai에게 질문하여\n해당 글의 핵심 정보만 파악해보세요!"
             android:textColor="#83899F"
             android:textSize="20sp" />
 
@@ -61,6 +76,7 @@
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
+        android:visibility="invisible"
         android:id="@+id/start_button"
         android:layout_width="match_parent"
         android:layout_height="50dp"
