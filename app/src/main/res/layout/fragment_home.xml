@@ -232,7 +232,7 @@
                     android:layout_marginEnd="30dp"
                     android:id="@+id/poem_button"
                     android:gravity="center"
-                    android:layout_width="wrap_content"
+                    android:layout_width="50dp"
                     android:layout_height="48dp">
 
                     <LinearLayout
@@ -242,6 +242,7 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:layout_gravity="center"
                             android:id="@+id/poem_text"
                             android:textStyle="bold"
                             android:textColor="@color/sub_text"
@@ -252,11 +253,12 @@
                             android:layout_height="wrap_content"/>
 
                         <LinearLayout
+                            android:layout_gravity="center"
                             android:visibility="invisible"
                             android:orientation="vertical"
                             android:id="@+id/poem_line"
                             android:background="@color/primary"
-                            android:layout_width="match_parent"
+                            android:layout_width="30dp"
                             android:layout_height="2dp"/>
 
                     </LinearLayout>
@@ -304,7 +306,7 @@
                     android:layout_marginEnd="30dp"
                     android:id="@+id/it_news_button"
                     android:gravity="center"
-                    android:layout_width="wrap_content"
+                    android:layout_width="50dp"
                     android:layout_height="48dp">
 
                     <LinearLayout
@@ -314,6 +316,7 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:layout_gravity="center"
                             android:id="@+id/it_news_text"
                             android:textStyle="bold"
                             android:textColor="@color/sub_text"
