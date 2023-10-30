@@ -171,6 +171,7 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:id="@+id/classic_novel_text"
                             android:textStyle="bold"
                             android:textColor="@color/text_black"
                             android:textSize="16sp"
@@ -205,8 +206,9 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:id="@+id/fairy_tale_text"
                             android:textStyle="bold"
-                            android:textColor="@color/text_black"
+                            android:textColor="@color/sub_text"
                             android:textSize="16sp"
                             android:fontFamily="@font/poppins_reqular"
                             android:text="전래 동화"
@@ -240,8 +242,9 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:id="@+id/poem_text"
                             android:textStyle="bold"
-                            android:textColor="@color/text_black"
+                            android:textColor="@color/sub_text"
                             android:textSize="16sp"
                             android:fontFamily="@font/poppins_reqular"
                             android:text="시"
@@ -275,8 +278,9 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:id="@+id/social_news_text"
                             android:textStyle="bold"
-                            android:textColor="@color/text_black"
+                            android:textColor="@color/sub_text"
                             android:textSize="16sp"
                             android:fontFamily="@font/poppins_reqular"
                             android:text="사회 뉴스"
@@ -310,8 +314,9 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:id="@+id/it_news_text"
                             android:textStyle="bold"
-                            android:textColor="@color/text_black"
+                            android:textColor="@color/sub_text"
                             android:textSize="16sp"
                             android:fontFamily="@font/poppins_reqular"
                             android:text="IT 뉴스"
@@ -345,8 +350,9 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:id="@+id/daily_news_text"
                             android:textStyle="bold"
-                            android:textColor="@color/text_black"
+                            android:textColor="@color/sub_text"
                             android:textSize="16sp"
                             android:fontFamily="@font/poppins_reqular"
                             android:text="생활 뉴스"
