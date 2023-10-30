@@ -7,13 +7,14 @@
     tools:context=".main.HomeFragment">
 
     <LinearLayout
+        android:background="@color/white"
         android:outlineProvider="none"
-        android:layout_marginHorizontal="30dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_marginHorizontal="26dp"
             android:layout_marginTop="50dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -78,6 +79,335 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <LinearLayout
+            android:layout_marginHorizontal="26dp"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textColor="@color/sub_text"
+                android:textSize="16sp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="다시 돌아온 걸 환영합니다!"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:textColor="@color/text_black"
+                android:textSize="24sp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="오늘은 어떤 글을\n읽어볼까요?"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_marginHorizontal="26dp"
+            android:id="@+id/search_button"
+            android:layout_marginTop="34dp"
+            android:backgroundTint="#F4F4F4"
+            android:outlineProvider="none"
+            app:cardCornerRadius="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="22dp"
+                    android:src="@drawable/search_icon"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="#C4C4C4" />
+
+                <TextView
+                    android:fontFamily="@font/poppins_reqular"
+                    android:textSize="16sp"
+                    android:textColor="#C4C4C4"
+                    android:layout_marginStart="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="검색하기"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <HorizontalScrollView
+            android:scrollbars="none"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="34dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_marginEnd="30dp"
+                    android:id="@+id/classic_novel_button"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textStyle="bold"
+                            android:textColor="@color/text_black"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/poppins_reqular"
+                            android:text="고전 소설"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:id="@+id/classic_novel_line"
+                            android:background="@color/primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"/>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginEnd="30dp"
+                    android:id="@+id/fairy_tale_button"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textStyle="bold"
+                            android:textColor="@color/text_black"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/poppins_reqular"
+                            android:text="전래 동화"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <LinearLayout
+                            android:visibility="invisible"
+                            android:orientation="vertical"
+                            android:id="@+id/fairy_tale_line"
+                            android:background="@color/primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"/>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginEnd="30dp"
+                    android:id="@+id/poem_button"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textStyle="bold"
+                            android:textColor="@color/text_black"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/poppins_reqular"
+                            android:text="시"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <LinearLayout
+                            android:visibility="invisible"
+                            android:orientation="vertical"
+                            android:id="@+id/poem_line"
+                            android:background="@color/primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"/>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginEnd="30dp"
+                    android:id="@+id/social_news_button"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textStyle="bold"
+                            android:textColor="@color/text_black"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/poppins_reqular"
+                            android:text="사회 뉴스"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <LinearLayout
+                            android:visibility="invisible"
+                            android:orientation="vertical"
+                            android:id="@+id/social_news_line"
+                            android:background="@color/primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"/>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginEnd="30dp"
+                    android:id="@+id/it_news_button"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textStyle="bold"
+                            android:textColor="@color/text_black"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/poppins_reqular"
+                            android:text="IT 뉴스"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <LinearLayout
+                            android:visibility="invisible"
+                            android:orientation="vertical"
+                            android:id="@+id/it_news_line"
+                            android:background="@color/primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"/>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginEnd="30dp"
+                    android:id="@+id/daily_news_button"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textStyle="bold"
+                            android:textColor="@color/text_black"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/poppins_reqular"
+                            android:text="생활 뉴스"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <LinearLayout
+                            android:visibility="invisible"
+                            android:orientation="vertical"
+                            android:id="@+id/daily_news_line"
+                            android:background="@color/primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"/>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+        <RelativeLayout
+            android:layout_marginTop="35dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/category_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:nestedScrollingEnabled="false" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="30dp"
+            android:textSize="22sp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/text_black"
+            android:text="내 도서"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+        <RelativeLayout
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/my_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:nestedScrollingEnabled="false" />
+
+        </RelativeLayout>
 
     </LinearLayout>
 
