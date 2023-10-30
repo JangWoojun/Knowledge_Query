@@ -6,6 +6,15 @@ data class PagerItem(
     val subject: String
 )
 
+data class Space(
+    var top: Int,
+    var left: Int,
+    var right: Int,
+    var bottom: Int,
+    var firstLeft: Int,
+    var lastRight: Int
+)
+
 enum class BookType {
     Category, My
 }
