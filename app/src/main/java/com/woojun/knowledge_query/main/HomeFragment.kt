@@ -50,8 +50,7 @@ class HomeFragment : Fragment() {
             categoryList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             categoryList.adapter = BookRecyclerAdapter(list)
 
-            categoryList.addItemDecoration(SpacesItemDecoration(Space(0,  14, 0, 0, 16, 16), BookType.Category))
-
+            categoryList.addItemDecoration(SpacesItemDecoration(Space(0,  14, 0, 0, 16, 16), Category))
 
             myList.layoutManager = GridLayoutManager(requireContext(), 2)
             myList.adapter = BookRecyclerAdapter(list.subList(3, 7))
