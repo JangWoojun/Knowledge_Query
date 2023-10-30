@@ -23,5 +23,5 @@ data class Space(
 )
 
 enum class BookType {
-    Category, My
+    Category, My, ClassicNovel, FairyTale, Poem, SocialNews, ItNews, DailyNews
 }
