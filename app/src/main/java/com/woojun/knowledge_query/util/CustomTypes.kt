@@ -5,3 +5,7 @@ data class PagerItem(
     val title: String,
     val subject: String
 )
+
+enum class BookType {
+    Category, My
+}
