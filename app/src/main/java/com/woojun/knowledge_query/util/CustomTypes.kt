@@ -6,6 +6,13 @@ data class PagerItem(
     val subject: String
 )
 
+data class BookInfo(
+    val title: String,
+    val writer: String,
+    val image: Int,
+    val category: BookType
+)
+
 data class Space(
     var top: Int,
     var left: Int,
