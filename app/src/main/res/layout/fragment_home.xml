@@ -129,14 +129,25 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:tint="#C4C4C4" />
 
-                <TextView
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/book_name_input"
+                    android:background="@null"
                     android:fontFamily="@font/poppins_reqular"
                     android:textSize="16sp"
-                    android:textColor="#C4C4C4"
+                    android:textColor="@color/text_black"
+                    android:imeOptions="actionSearch"
+                    android:maxLines="1"
+                    android:inputType="text"
+                    android:textColorHighlight="@color/primary"
+                    android:textCursorDrawable="@drawable/custom_cursor"
+                    android:textSelectHandle="@drawable/select_handler"
+                    android:textSelectHandleLeft="@drawable/select_handler"
+                    android:textSelectHandleRight="@drawable/select_handler"
+                    android:textColorHint="#C4C4C4"
                     android:layout_marginStart="8dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="검색하기"
+                    android:layout_height="48dp"
+                    android:hint="검색하기"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView2"
                     app:layout_constraintTop_toTopOf="parent" />
