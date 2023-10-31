@@ -27,5 +27,13 @@
         <item name="android:tint">#19191B</item>
     </style>
 
+    <style name="CardViewBackgroundColor">
+        <item name="android:backgroundTint">@color/white</item>
+    </style>
+
+    <style name="CardButtonBackgroundColor">
+        <item name="android:backgroundTint">@color/background_black</item>
+    </style>
+
 
 </resources>

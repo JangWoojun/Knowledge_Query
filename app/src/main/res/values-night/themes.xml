@@ -25,4 +25,12 @@
         <item name="android:tint">@color/white</item>
     </style>
 
+    <style name="CardViewBackgroundColor">
+        <item name="android:backgroundTint">@color/background_black</item>
+    </style>
+
+    <style name="CardButtonBackgroundColor">
+        <item name="android:backgroundTint">@color/white</item>
+    </style>
+
 </resources>
