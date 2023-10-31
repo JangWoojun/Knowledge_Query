@@ -5,6 +5,8 @@
         <item name="android:statusBarColor">@color/white</item>
     </style>
 
+    <style name="Theme.Knowledge_Query" parent="Base.Theme.Knowledge_Query" />
+
     <style name="BackgroundColor">
         <item name="android:background">@color/white</item>
     </style>
@@ -13,6 +15,17 @@
         <item name="android:textColor">@color/text_black</item>
     </style>
 
-    <style name="Theme.Knowledge_Query" parent="Base.Theme.Knowledge_Query" />
+    <style name="SubTextColor">
+        <item name="android:textColor">@color/sub_text</item>
+    </style>
+
+    <style name="SearchColor">
+        <item name="android:backgroundTint">#F4F4F4</item>
+    </style>
+
+    <style name="ImageColor">
+        <item name="android:tint">#19191B</item>
+    </style>
+
 
 </resources>
