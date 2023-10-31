@@ -5,5 +5,14 @@
         <item name="android:statusBarColor">@color/white</item>
     </style>
 
+    <style name="BackgroundColor">
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="TextColor">
+        <item name="android:textColor">@color/text_black</item>
+    </style>
+
+    <style name="Theme.Knowledge_Query" parent="Base.Theme.Knowledge_Query" />
 
 </resources>
