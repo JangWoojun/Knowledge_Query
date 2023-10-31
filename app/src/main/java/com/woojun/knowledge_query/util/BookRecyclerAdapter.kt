@@ -1,19 +1,31 @@
 package com.woojun.knowledge_query.util
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.woojun.knowledge_query.R
 import com.woojun.knowledge_query.databinding.BookItemBinding
 
-class BookRecyclerAdapter(private val bookList: List<BookInfo>): RecyclerView.Adapter<BookRecyclerAdapter.BookViewHolder>() {
+class BookRecyclerAdapter(private val bookList: List<BookInfo>, private val type: BookType): RecyclerView.Adapter<BookRecyclerAdapter.BookViewHolder>() {
 
     private var filteredBookList: List<BookInfo> = bookList
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder{
         val binding = BookItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return BookViewHolder(binding).also { handler->
-            binding.apply{
+            binding.apply {
+                bookItem.setOnClickListener {
+                    val bundle = Bundle()
+                    bundle.putParcelable("book info", bookList[handler.position])
 
+                    if (type == BookType.Category) {
+                        parent.findNavController().navigate(R.id.action_home_to_bookInfoFragment, bundle)
+                    } else {
+                        parent.findNavController().navigate(R.id.action_home_to_bookReaderFragment, bundle)
+                    }
+                }
             }
         }
     }
