@@ -16,7 +16,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_marginHorizontal="26dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -30,13 +30,13 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
+                    style="@style/ImageColor"
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:src="@drawable/menu_icon"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:tint="#19191B" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -88,7 +88,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:textColor="@color/sub_text"
+                style="@style/SubTextColor"
                 android:textSize="16sp"
                 android:fontFamily="@font/poppins_medium"
                 android:text="다시 돌아온 걸 환영합니다"
@@ -99,7 +99,6 @@
                 style="@style/TextColor"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
-                android:textColor="@color/text_black"
                 android:textSize="24sp"
                 android:fontFamily="@font/poppins_semibold"
                 android:text="오늘은 또 어떤 글을\n읽어볼까요?"
@@ -112,8 +111,8 @@
             android:layout_marginHorizontal="26dp"
             android:id="@+id/search_button"
             android:layout_marginTop="34dp"
-            android:backgroundTint="#F4F4F4"
             android:outlineProvider="none"
+            style="@style/SearchColor"
             app:cardCornerRadius="10dp"
             android:layout_width="match_parent"
             android:layout_height="50dp">
@@ -139,7 +138,7 @@
                     android:background="@null"
                     android:fontFamily="@font/poppins_reqular"
                     android:textSize="16sp"
-                    android:textColor="@color/text_black"
+                    style="@style/TextColor"
                     android:imeOptions="actionSearch"
                     android:maxLines="1"
                     android:inputType="text"
@@ -189,7 +188,6 @@
                         <TextView
                             style="@style/TextColor"
                             android:id="@+id/classic_novel_text"
-                            android:textStyle="bold"
                             android:textSize="16sp"
                             android:fontFamily="@font/poppins_reqular"
                             android:text="고전 소설"
@@ -223,8 +221,7 @@
 
                         <TextView
                             android:id="@+id/fairy_tale_text"
-                            android:textStyle="bold"
-                            android:textColor="@color/sub_text"
+                            style="@style/SubTextColor"
                             android:textSize="16sp"
                             android:fontFamily="@font/poppins_reqular"
                             android:text="전래 동화"
@@ -260,8 +257,7 @@
                         <TextView
                             android:layout_gravity="center"
                             android:id="@+id/poem_text"
-                            android:textStyle="bold"
-                            android:textColor="@color/sub_text"
+                            style="@style/SubTextColor"
                             android:textSize="16sp"
                             android:fontFamily="@font/poppins_reqular"
                             android:text="고전 시"
@@ -296,8 +292,7 @@
 
                         <TextView
                             android:id="@+id/social_news_text"
-                            android:textStyle="bold"
-                            android:textColor="@color/sub_text"
+                            style="@style/SubTextColor"
                             android:textSize="16sp"
                             android:fontFamily="@font/poppins_reqular"
                             android:text="사회 뉴스"
@@ -333,8 +328,7 @@
                         <TextView
                             android:layout_gravity="center"
                             android:id="@+id/it_news_text"
-                            android:textStyle="bold"
-                            android:textColor="@color/sub_text"
+                            style="@style/SubTextColor"
                             android:textSize="16sp"
                             android:fontFamily="@font/poppins_reqular"
                             android:text="IT 뉴스"
@@ -369,8 +363,7 @@
 
                         <TextView
                             android:id="@+id/daily_news_text"
-                            android:textStyle="bold"
-                            android:textColor="@color/sub_text"
+                            style="@style/SubTextColor"
                             android:textSize="16sp"
                             android:fontFamily="@font/poppins_reqular"
                             android:text="생활 뉴스"
@@ -414,7 +407,6 @@
             android:layout_marginStart="30dp"
             android:textSize="22sp"
             android:fontFamily="@font/poppins_semibold"
-            android:textColor="@color/text_black"
             android:text="내 도서"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
