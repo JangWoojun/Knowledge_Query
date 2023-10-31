@@ -3,14 +3,17 @@ package com.woojun.knowledge_query.util
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.appcompat.app.AppCompatDelegate
 
-class Preference : Application() {
+class MyApplication : Application() {
     companion object {
         lateinit var prefs: PreferenceUtil
     }
 
     override fun onCreate() {
         prefs = PreferenceUtil(applicationContext)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+
         super.onCreate()
     }
 }
@@ -18,14 +21,6 @@ class Preference : Application() {
 class PreferenceUtil(context: Context) {
     private val prefs: SharedPreferences =
         context.getSharedPreferences("default value", Context.MODE_PRIVATE)
-
-    fun getMode(): Boolean {
-        return prefs.getBoolean("mode", true)
-    }
-
-    fun setMode(mode: Boolean) {
-        prefs.edit().putBoolean("mode", mode).apply()
-    }
 
     fun isFirst(): Boolean {
         return prefs.getBoolean("isFirst", false)
