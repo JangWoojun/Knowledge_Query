@@ -88,14 +88,15 @@ class HomeFragment : Fragment() {
 
         binding.apply {
 
-            val adapter1 = BookRecyclerAdapter(list)
+
+            val adapter1 = BookRecyclerAdapter(list, Category)
 
             categoryList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             adapter1.filterByCategory(ClassicNovel)
             categoryList.adapter = adapter1
             categoryList.addItemDecoration(SpacesItemDecoration(Space(0,  14, 0, 0, 16, 16), Category))
 
-            val adapter2 = BookRecyclerAdapter(list)
+            val adapter2 = BookRecyclerAdapter(list, My)
 
             myList.layoutManager = GridLayoutManager(requireContext(), 2)
             adapter2.filterByCategory(My)
