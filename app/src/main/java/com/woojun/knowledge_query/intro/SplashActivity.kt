@@ -33,5 +33,12 @@ class SplashActivity : AppCompatActivity() {
                 finishAffinity()
             }
         }, 1500)
+
+        window.apply {
+            decorView.systemUiVisibility =
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
+                        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+            statusBarColor = Color.TRANSPARENT
+        }
     }
 }
