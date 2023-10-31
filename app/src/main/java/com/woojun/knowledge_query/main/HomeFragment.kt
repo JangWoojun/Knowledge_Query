@@ -1,11 +1,15 @@
 package com.woojun.knowledge_query.main
 
+import android.app.UiModeManager
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.woojun.knowledge_query.R
@@ -14,6 +18,7 @@ import com.woojun.knowledge_query.util.BookInfo
 import com.woojun.knowledge_query.util.BookRecyclerAdapter
 import com.woojun.knowledge_query.util.BookType
 import com.woojun.knowledge_query.util.BookType.*
+import com.woojun.knowledge_query.util.Preference
 import com.woojun.knowledge_query.util.Space
 import com.woojun.knowledge_query.util.SpacesItemDecoration
 
@@ -119,6 +124,19 @@ class HomeFragment : Fragment() {
 
             dailyNewsButton.setOnClickListener {
                 categoryButtonClick(DailyNews)
+            }
+
+            bookNameInput.setOnEditorActionListener { _, actionId, event ->
+                val bundle = Bundle()
+                bundle.putString("book name", bookNameInput.text.toString())
+                findNavController().navigate(R.id.action_home_to_searchFragment, bundle)
+
+                true
+            }
+
+            bookNameLayout.setOnClickListener {
+                bookNameInput.requestFocus()
+                showKeyboard(requireContext(), bookNameInput)
             }
 
         }
