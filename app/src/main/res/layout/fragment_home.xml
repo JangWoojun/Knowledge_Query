@@ -4,10 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:scrollbars="none"
     tools:context=".main.HomeFragment">
 
     <LinearLayout
-        android:background="@color/white"
+        style="@style/BackgroundColor"
         android:outlineProvider="none"
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -90,15 +91,18 @@
                 android:textColor="@color/sub_text"
                 android:textSize="16sp"
                 android:fontFamily="@font/poppins_medium"
-                android:text="다시 돌아온 걸 환영합니다!"
+                android:text="다시 돌아온 걸 환영합니다"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <TextView
+                style="@style/TextColor"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:textColor="@color/text_black"
                 android:textSize="24sp"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="오늘은 어떤 글을\n읽어볼까요?"
+                android:text="오늘은 또 어떤 글을\n읽어볼까요?"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -115,6 +119,7 @@
             android:layout_height="50dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/book_name_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -182,9 +187,9 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            style="@style/TextColor"
                             android:id="@+id/classic_novel_text"
                             android:textStyle="bold"
-                            android:textColor="@color/text_black"
                             android:textSize="16sp"
                             android:fontFamily="@font/poppins_reqular"
                             android:text="고전 소설"
@@ -243,7 +248,7 @@
                     android:layout_marginEnd="30dp"
                     android:id="@+id/poem_button"
                     android:gravity="center"
-                    android:layout_width="50dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="48dp">
 
                     <LinearLayout
@@ -259,17 +264,16 @@
                             android:textColor="@color/sub_text"
                             android:textSize="16sp"
                             android:fontFamily="@font/poppins_reqular"
-                            android:text="시"
+                            android:text="고전 시"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
 
                         <LinearLayout
-                            android:layout_gravity="center"
                             android:visibility="invisible"
                             android:orientation="vertical"
                             android:id="@+id/poem_line"
                             android:background="@color/primary"
-                            android:layout_width="30dp"
+                            android:layout_width="match_parent"
                             android:layout_height="2dp"/>
 
                     </LinearLayout>
@@ -405,6 +409,7 @@
         </RelativeLayout>
 
         <TextView
+            style="@style/TextColor"
             android:layout_marginTop="30dp"
             android:layout_marginStart="30dp"
             android:textSize="22sp"
