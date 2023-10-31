@@ -16,96 +16,55 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_marginHorizontal="26dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="40dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/menu_button"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:gravity="center"
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:id="@+id/linearLayout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <ImageView
-                    style="@style/ImageColor"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:src="@drawable/menu_icon"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    style="@style/SubTextColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="다시 돌아온 걸 환영합니다"
+                    android:textSize="16sp" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    style="@style/TextColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="오늘은 또 어떤 글을\n지식쿼리와 함께 읽어볼까요?"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+
 
             <Switch
-                android:checked="false"
-                android:layout_marginEnd="20dp"
                 android:id="@+id/switch_mode"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
+                android:checked="false"
                 android:thumb="@drawable/thumb"
                 android:track="@drawable/track"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/materialCardView"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="UseSwitchCompatOrMaterialXml" />
-
-            <com.google.android.material.card.MaterialCardView
-                android:outlineProvider="none"
-                android:id="@+id/materialCardView"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                app:cardCornerRadius="200dp"
-                app:strokeWidth="0.5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:layout_marginTop="0.6dp"
-                    android:layout_gravity="center"
-                    android:id="@+id/imageView"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:src="@drawable/profile"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </com.google.android.material.card.MaterialCardView>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <LinearLayout
-            android:layout_marginHorizontal="26dp"
-            android:layout_marginTop="30dp"
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                style="@style/SubTextColor"
-                android:textSize="16sp"
-                android:fontFamily="@font/poppins_medium"
-                android:text="다시 돌아온 걸 환영합니다"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                style="@style/TextColor"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:textSize="24sp"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="오늘은 또 어떤 글을\n읽어볼까요?"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-        </LinearLayout>
 
         <androidx.cardview.widget.CardView
             android:layout_marginHorizontal="26dp"
