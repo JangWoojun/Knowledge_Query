@@ -1,10 +1,14 @@
 package com.woojun.knowledge_query.main
 
+import android.app.UiModeManager
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.navigation.findNavController
 import com.woojun.knowledge_query.R
 import com.woojun.knowledge_query.databinding.ActivityMainBinding
+import com.woojun.knowledge_query.util.Preference
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -39,4 +43,16 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
+    fun hideBottomNavigation(state: Boolean){
+        binding.apply {
+            if (state) {
+                bottomNavigation.visibility = View.INVISIBLE
+            } else {
+                bottomNavigation.visibility = View.VISIBLE
+            }
+        }
+    }
+
+
 }
