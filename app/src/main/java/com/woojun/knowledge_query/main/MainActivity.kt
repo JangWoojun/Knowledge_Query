@@ -13,6 +13,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val uiModeManager = getSystemService(Context.UI_MODE_SERVICE) as UiModeManager
+        if (uiModeManager.nightMode == UiModeManager.MODE_NIGHT_YES) {
+            Preference.prefs.setMode(true)
+        } else {
+            Preference.prefs.setMode(false)
+        }
+
         binding.apply {
             val navController = findNavController(R.id.nav_host_fragment)
             bottomNavigation.setItemSelected(R.id.home)

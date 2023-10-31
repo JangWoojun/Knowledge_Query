@@ -13,6 +13,12 @@ class IntroActivity : AppCompatActivity() {
 
         binding.apply {
 
+            val uiModeManager = getSystemService(Context.UI_MODE_SERVICE) as UiModeManager
+            if (uiModeManager.nightMode == UiModeManager.MODE_NIGHT_YES) {
+                Preference.prefs.setMode(true)
+            } else {
+                Preference.prefs.setMode(false)
+            }
         }
     }
 }

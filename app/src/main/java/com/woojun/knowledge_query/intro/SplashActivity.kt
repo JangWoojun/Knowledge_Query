@@ -1,9 +1,13 @@
 package com.woojun.knowledge_query.intro
 
+import android.app.UiModeManager
+import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.view.View
 import com.woojun.knowledge_query.util.Preference
 import com.woojun.knowledge_query.R
 import com.woojun.knowledge_query.main.MainActivity
@@ -12,6 +16,13 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+
+        val uiModeManager = getSystemService(Context.UI_MODE_SERVICE) as UiModeManager
+        if (uiModeManager.nightMode == UiModeManager.MODE_NIGHT_YES) {
+            Preference.prefs.setMode(true)
+        } else {
+            Preference.prefs.setMode(false)
+        }
 
         Handler().postDelayed({
             if (Preference.prefs.isFirst()) {
