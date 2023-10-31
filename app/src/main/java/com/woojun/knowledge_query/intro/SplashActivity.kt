@@ -1,16 +1,14 @@
 package com.woojun.knowledge_query.intro
 
-import android.app.UiModeManager
-import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
-import com.woojun.knowledge_query.util.Preference
 import com.woojun.knowledge_query.R
 import com.woojun.knowledge_query.main.MainActivity
+import com.woojun.knowledge_query.util.MyApplication
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +23,7 @@ class SplashActivity : AppCompatActivity() {
         }
 
         Handler().postDelayed({
-            if (Preference.prefs.isFirst()) {
+            if (MyApplication.prefs.isFirst()) {
                 startActivity(Intent(this@SplashActivity, MainActivity::class.java))
                 finishAffinity()
             } else {

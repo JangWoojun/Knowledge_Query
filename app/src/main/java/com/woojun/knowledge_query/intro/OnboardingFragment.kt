@@ -11,9 +11,9 @@ import androidx.viewpager2.widget.ViewPager2
 import com.woojun.knowledge_query.main.MainActivity
 import com.woojun.knowledge_query.util.OnboardingRecyclerAdapter
 import com.woojun.knowledge_query.util.PagerItem
-import com.woojun.knowledge_query.util.Preference
 import com.woojun.knowledge_query.R
 import com.woojun.knowledge_query.databinding.FragmentOnboardingBinding
+import com.woojun.knowledge_query.util.MyApplication
 
 class OnboardingFragment : Fragment() {
 
@@ -62,7 +62,7 @@ class OnboardingFragment : Fragment() {
             }
 
             startButton.setOnClickListener {
-                Preference.prefs.notFirst()
+                MyApplication.prefs.notFirst()
                 startActivity(Intent(requireContext(), MainActivity::class.java))
                 finishAffinity(requireActivity())
             }

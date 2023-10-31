@@ -1,13 +1,15 @@
 package com.woojun.knowledge_query.main
 
-import android.app.UiModeManager
 import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -18,7 +20,6 @@ import com.woojun.knowledge_query.util.BookInfo
 import com.woojun.knowledge_query.util.BookRecyclerAdapter
 import com.woojun.knowledge_query.util.BookType
 import com.woojun.knowledge_query.util.BookType.*
-import com.woojun.knowledge_query.util.Preference
 import com.woojun.knowledge_query.util.Space
 import com.woojun.knowledge_query.util.SpacesItemDecoration
 
