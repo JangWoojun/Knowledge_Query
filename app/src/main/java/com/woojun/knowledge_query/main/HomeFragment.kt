@@ -164,57 +164,111 @@ class HomeFragment : Fragment() {
             itNewsText.setTextColor(ContextCompat.getColor(requireContext(), R.color.sub_text))
             dailyNewsText.setTextColor(ContextCompat.getColor(requireContext(), R.color.sub_text))
 
-            val adapter = BookRecyclerAdapter(list)
+            val adapter = BookRecyclerAdapter(list, Category)
+            val uiModeManager = context?.getSystemService(Context.UI_MODE_SERVICE) as UiModeManager
+            if (uiModeManager.nightMode == UiModeManager.MODE_NIGHT_YES) {
+                when(type) {
+                    ClassicNovel -> {
+                        adapter.filterByCategory(ClassicNovel)
+                        categoryList.adapter = adapter
 
-            when(type) {
-                ClassicNovel -> {
-                    adapter.filterByCategory(ClassicNovel)
-                    categoryList.adapter = adapter
+                        classicNovelLine.visibility = View.VISIBLE
+                        classicNovelText.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+                    }
+                    FairyTale -> {
+                        adapter.filterByCategory(FairyTale)
+                        categoryList.adapter = adapter
 
-                    classicNovelLine.visibility = View.VISIBLE
-                    classicNovelText.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_black))
+                        fairyTaleLine.visibility = View.VISIBLE
+                        fairyTaleText.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+                    }
+                    Poem -> {
+                        adapter.filterByCategory(Poem)
+                        categoryList.adapter = adapter
+
+                        poemLine.visibility = View.VISIBLE
+                        poemText.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+                    }
+                    SocialNews -> {
+                        adapter.filterByCategory(SocialNews)
+                        categoryList.adapter = adapter
+
+                        socialNewsLine.visibility = View.VISIBLE
+                        socialNewsText.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+                    }
+                    ItNews -> {
+                        adapter.filterByCategory(ItNews)
+                        categoryList.adapter = adapter
+
+                        itNewsLine.visibility = View.VISIBLE
+                        itNewsText.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+                    }
+                    DailyNews -> {
+                        adapter.filterByCategory(DailyNews)
+                        categoryList.adapter = adapter
+
+                        dailyNewsLine.visibility = View.VISIBLE
+                        dailyNewsText.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+                    }
+                    else -> {
+
+                    }
                 }
-                FairyTale -> {
-                    adapter.filterByCategory(FairyTale)
-                    categoryList.adapter = adapter
+            } else {
+                when(type) {
+                    ClassicNovel -> {
+                        adapter.filterByCategory(ClassicNovel)
+                        categoryList.adapter = adapter
 
-                    fairyTaleLine.visibility = View.VISIBLE
-                    fairyTaleText.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_black))
-                }
-                Poem -> {
-                    adapter.filterByCategory(Poem)
-                    categoryList.adapter = adapter
+                        classicNovelLine.visibility = View.VISIBLE
+                        classicNovelText.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_black))
+                    }
+                    FairyTale -> {
+                        adapter.filterByCategory(FairyTale)
+                        categoryList.adapter = adapter
 
-                    poemLine.visibility = View.VISIBLE
-                    poemText.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_black))
-                }
-                SocialNews -> {
-                    adapter.filterByCategory(SocialNews)
-                    categoryList.adapter = adapter
+                        fairyTaleLine.visibility = View.VISIBLE
+                        fairyTaleText.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_black))
+                    }
+                    Poem -> {
+                        adapter.filterByCategory(Poem)
+                        categoryList.adapter = adapter
 
-                    socialNewsLine.visibility = View.VISIBLE
-                    socialNewsText.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_black))
-                }
-                ItNews -> {
-                    adapter.filterByCategory(ItNews)
-                    categoryList.adapter = adapter
+                        poemLine.visibility = View.VISIBLE
+                        poemText.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_black))
+                    }
+                    SocialNews -> {
+                        adapter.filterByCategory(SocialNews)
+                        categoryList.adapter = adapter
 
-                    itNewsLine.visibility = View.VISIBLE
-                    itNewsText.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_black))
-                }
-                DailyNews -> {
-                    adapter.filterByCategory(DailyNews)
-                    categoryList.adapter = adapter
+                        socialNewsLine.visibility = View.VISIBLE
+                        socialNewsText.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_black))
+                    }
+                    ItNews -> {
+                        adapter.filterByCategory(ItNews)
+                        categoryList.adapter = adapter
 
-                    dailyNewsLine.visibility = View.VISIBLE
-                    dailyNewsText.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_black))
-                }
-                else -> {
+                        itNewsLine.visibility = View.VISIBLE
+                        itNewsText.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_black))
+                    }
+                    DailyNews -> {
+                        adapter.filterByCategory(DailyNews)
+                        categoryList.adapter = adapter
 
+                        dailyNewsLine.visibility = View.VISIBLE
+                        dailyNewsText.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_black))
+                    }
+                    else -> {
+
+                    }
                 }
             }
-
         }
+    }
+
+    private fun showKeyboard(context: Context, view: View) {
+        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.showSoftInput(view, 0)
     }
 
 }
