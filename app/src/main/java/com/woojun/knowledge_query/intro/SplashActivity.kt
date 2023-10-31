@@ -15,13 +15,6 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        val uiModeManager = getSystemService(Context.UI_MODE_SERVICE) as UiModeManager
-        if (uiModeManager.nightMode == UiModeManager.MODE_NIGHT_YES) {
-            Preference.prefs.setMode(true)
-        } else {
-            Preference.prefs.setMode(false)
-        }
-
         Handler().postDelayed({
             if (MyApplication.prefs.isFirst()) {
                 startActivity(Intent(this@SplashActivity, MainActivity::class.java))

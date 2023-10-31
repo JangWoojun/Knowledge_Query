@@ -1,14 +1,11 @@
 package com.woojun.knowledge_query.main
 
-import android.app.UiModeManager
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.findNavController
 import com.woojun.knowledge_query.R
 import com.woojun.knowledge_query.databinding.ActivityMainBinding
-import com.woojun.knowledge_query.util.Preference
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -16,13 +13,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val uiModeManager = getSystemService(Context.UI_MODE_SERVICE) as UiModeManager
-        if (uiModeManager.nightMode == UiModeManager.MODE_NIGHT_YES) {
-            Preference.prefs.setMode(true)
-        } else {
-            Preference.prefs.setMode(false)
-        }
 
         binding.apply {
             val navController = findNavController(R.id.nav_host_fragment)
