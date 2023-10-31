@@ -1,4 +1,6 @@
 package com.woojun.knowledge_query.util
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
 data class PagerItem(
     val image: Int,
@@ -6,12 +8,13 @@ data class PagerItem(
     val subject: String
 )
 
+@Parcelize
 data class BookInfo(
     val title: String,
     val writer: String,
     val image: Int,
     val category: BookType
-)
+): Parcelable
 
 data class Space(
     var top: Int,
