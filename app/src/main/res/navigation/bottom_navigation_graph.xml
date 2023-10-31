@@ -24,12 +24,20 @@
         android:id="@+id/myLibrary"
         android:name="com.woojun.knowledge_query.main.MyLibraryFragment"
         android:label="fragment_my_library"
-        tools:layout="@layout/fragment_my_library" />
+        tools:layout="@layout/fragment_my_library" >
+        <action
+            android:id="@+id/action_myLibrary_to_bookReaderFragment"
+            app:destination="@id/bookReaderFragment" />
+    </fragment>
     <fragment
         android:id="@+id/bookmark"
         android:name="com.woojun.knowledge_query.main.BookmarkFragment"
         android:label="fragment_bookmark"
-        tools:layout="@layout/fragment_bookmark" />
+        tools:layout="@layout/fragment_bookmark" >
+        <action
+            android:id="@+id/action_bookmark_to_bookInfoFragment"
+            app:destination="@id/bookInfoFragment" />
+    </fragment>
     <fragment
         android:id="@+id/setting"
         android:name="com.woojun.knowledge_query.main.SettingFragment"
@@ -39,7 +47,11 @@
         android:id="@+id/bookInfoFragment"
         android:name="com.woojun.knowledge_query.main.BookInfoFragment"
         android:label="fragment_book_info"
-        tools:layout="@layout/fragment_book_info" />
+        tools:layout="@layout/fragment_book_info" >
+        <action
+            android:id="@+id/action_bookInfoFragment_to_bookReaderFragment"
+            app:destination="@id/bookReaderFragment" />
+    </fragment>
     <fragment
         android:id="@+id/bookReaderFragment"
         android:name="com.woojun.knowledge_query.main.BookReaderFragment"
@@ -49,5 +61,9 @@
         android:id="@+id/searchFragment"
         android:name="com.woojun.knowledge_query.main.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_bookInfoFragment"
+            app:destination="@id/bookInfoFragment" />
+    </fragment>
 </navigation>
