@@ -89,6 +89,19 @@ class HomeFragment : Fragment() {
 
         binding.apply {
 
+            switchMode.isChecked = isNightModeActive(requireContext())
+            switchMode.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    Handler().postDelayed({
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    }, 100)
+                } else {
+                    Handler().postDelayed({
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                    }, 100)
+                }
+            }
+
 
             val adapter1 = BookRecyclerAdapter(list, Category)
 
@@ -271,5 +284,14 @@ class HomeFragment : Fragment() {
         val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.showSoftInput(view, 0)
     }
+
+    private fun isNightModeActive(context: Context): Boolean {
+        return when (context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
+            Configuration.UI_MODE_NIGHT_YES -> true
+            Configuration.UI_MODE_NIGHT_NO -> false
+            else -> false
+        }
+    }
+
 
 }
