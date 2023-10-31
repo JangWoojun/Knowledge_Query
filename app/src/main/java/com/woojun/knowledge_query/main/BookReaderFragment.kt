@@ -13,6 +13,7 @@ class BookReaderFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        (activity as MainActivity).hideBottomNavigation(true)
     }
 
     override fun onCreateView(
@@ -33,6 +34,7 @@ class BookReaderFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        (activity as MainActivity).hideBottomNavigation(false)
         _binding = null
     }
 
