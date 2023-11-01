@@ -33,4 +33,8 @@
         <item name="android:backgroundTint">@color/white</item>
     </style>
 
+    <style name="CardButtonBackgroundColor2">
+        <item name="android:backgroundTint">@color/background_black</item>
+    </style>
+
 </resources>
