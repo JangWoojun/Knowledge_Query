@@ -1,6 +1,54 @@
 package com.woojun.knowledge_query.util
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.TypeConverter
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import kotlinx.parcelize.Parcelize
+
+class TypeConverter {
+    @TypeConverter
+    fun fromUser(user: User): String {
+        return Gson().toJson(user)
+    }
+
+    @TypeConverter
+    fun toUser(user: String): User {
+        val userType = object : TypeToken<User>() {}.type
+        return Gson().fromJson(user, userType)
+    }
+
+    @TypeConverter
+    fun fromBookInfo(bookInfo: BookInfo): String {
+        return Gson().toJson(bookInfo)
+    }
+
+    @TypeConverter
+    fun toBookInfo(bookInfoString: String): BookInfo {
+        return Gson().fromJson(bookInfoString, BookInfo::class.java)
+    }
+
+    @TypeConverter
+    fun fromBookInfoList(bookInfoList: List<BookInfo>): String {
+        val gson = Gson()
+        return gson.toJson(bookInfoList)
+    }
+
+    @TypeConverter
+    fun toBookInfoList(bookInfoString: String): List<BookInfo> {
+        val gson = Gson()
+        val type = object : TypeToken<List<BookInfo>>() {}.type
+        return gson.fromJson(bookInfoString, type)
+    }
+}
+
+@Entity
+data class User(
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
+    val bookmark: MutableList<BookInfo>
+)
 
 data class PagerItem(
     val image: Int,
