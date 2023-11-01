@@ -1,6 +1,7 @@
 package com.woojun.knowledge_query.util
 
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
@@ -35,7 +36,7 @@ class BookRecyclerAdapter(private val bookList: List<BookInfo>, private val type
     }
 
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
-        holder.bind(filteredBookList[position])
+        holder.bind(filteredBookList[position], type)
     }
 
     fun filterByCategory(category: BookType) {
@@ -45,11 +46,16 @@ class BookRecyclerAdapter(private val bookList: List<BookInfo>, private val type
 
     class BookViewHolder(private val binding: BookItemBinding):
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(bookInfo: BookInfo) {
+        fun bind(bookInfo: BookInfo, type: BookType) {
             binding.apply {
                 title.text = bookInfo.title
                 writer.text = bookInfo.writer
                 image.setImageResource(bookInfo.image)
+
+                if (type != BookType.Category) {
+                    title.gravity = Gravity.CENTER
+                    writer.gravity = Gravity.CENTER
+                }
             }
         }
     }
