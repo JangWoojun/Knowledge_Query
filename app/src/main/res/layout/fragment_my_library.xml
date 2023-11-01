@@ -6,6 +6,41 @@
     style="@style/BackgroundColor"
     tools:context=".main.MyLibraryFragment">
 
+    <LinearLayout
+        android:layout_marginHorizontal="14dp"
+        android:orientation="vertical"
+        android:layout_marginTop="35dp"
+        android:gravity="center"
+        style="@style/BackgroundColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+        <TextView
+            android:textSize="20sp"
+            android:background="@null"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="북마크 목록"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <RelativeLayout
+            android:layout_marginBottom="50dp"
+            android:layout_marginTop="8dp"
+            android:id="@+id/relativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/bookmark_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:nestedScrollingEnabled="false" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
 
 </FrameLayout>

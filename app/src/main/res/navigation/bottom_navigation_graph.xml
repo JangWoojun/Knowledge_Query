@@ -30,10 +30,10 @@
             app:destination="@id/bookReaderFragment" />
     </fragment>
     <fragment
-        android:id="@+id/bookmark"
-        android:name="com.woojun.knowledge_query.main.BookmarkFragment"
-        android:label="fragment_bookmark"
-        tools:layout="@layout/fragment_bookmark" >
+        android:id="@+id/query"
+        android:name="com.woojun.knowledge_query.main.QueryFragment"
+        android:label="fragment_query"
+        tools:layout="@layout/fragment_query" >
         <action
             android:id="@+id/action_bookmark_to_bookInfoFragment"
             app:destination="@id/bookInfoFragment" />

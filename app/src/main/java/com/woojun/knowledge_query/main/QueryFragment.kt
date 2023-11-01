@@ -5,11 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.woojun.knowledge_query.databinding.FragmentBookmarkBinding
+import com.woojun.knowledge_query.databinding.FragmentQueryBinding
 
-class BookmarkFragment : Fragment() {
+class QueryFragment : Fragment() {
 
-    private var _binding: FragmentBookmarkBinding? = null
+    private var _binding: FragmentQueryBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +20,7 @@ class BookmarkFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentBookmarkBinding.inflate(inflater, container, false)
+        _binding = FragmentQueryBinding.inflate(inflater, container, false)
         return binding.root
     }
 
