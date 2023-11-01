@@ -366,7 +366,7 @@
             android:layout_marginStart="30dp"
             android:textSize="22sp"
             android:fontFamily="@font/poppins_semibold"
-            android:text="내 도서"
+            android:text="최근 본 도서"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -378,7 +378,7 @@
             android:layout_height="wrap_content">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/my_list"
+                android:id="@+id/recently_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:nestedScrollingEnabled="false" />

@@ -112,10 +112,10 @@ class HomeFragment : Fragment() {
 
             val adapter2 = BookRecyclerAdapter(list, My)
 
-            myList.layoutManager = GridLayoutManager(requireContext(), 2)
+            recentlyList.layoutManager = GridLayoutManager(requireContext(), 2)
             adapter2.filterByCategory(My)
-            myList.adapter = adapter2
-            myList.addItemDecoration(SpacesItemDecoration(Space(0,  0, 0, 16, 16, 16), My))
+            recentlyList.adapter = adapter2
+            recentlyList.addItemDecoration(SpacesItemDecoration(Space(0,  0, 0, 16, 16, 16), My))
 
             classicNovelButton.setOnClickListener {
                 categoryButtonClick(ClassicNovel)
