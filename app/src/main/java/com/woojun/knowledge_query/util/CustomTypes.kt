@@ -61,7 +61,11 @@ data class BookInfo(
     val title: String,
     val writer: String,
     val image: Int,
-    val category: BookType
+    val category: BookType,
+    val overview: String,
+    val aboutAuthor: String,
+    var url: String = "",
+    var isDownload: Boolean = false
 ): Parcelable
 
 data class Space(
