@@ -13,7 +13,12 @@ import com.woojun.knowledge_query.util.OnboardingRecyclerAdapter
 import com.woojun.knowledge_query.util.PagerItem
 import com.woojun.knowledge_query.R
 import com.woojun.knowledge_query.databinding.FragmentOnboardingBinding
+import com.woojun.knowledge_query.util.AppDatabase
 import com.woojun.knowledge_query.util.MyApplication
+import com.woojun.knowledge_query.util.User
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class OnboardingFragment : Fragment() {
 
@@ -63,6 +68,14 @@ class OnboardingFragment : Fragment() {
 
             startButton.setOnClickListener {
                 MyApplication.prefs.notFirst()
+
+                CoroutineScope(Dispatchers.IO).launch {
+                    val db = AppDatabase.getDatabase(requireContext())
+                    val userDao = db?.userDao()
+
+                    userDao!!.insertUser(User(bookmark = mutableListOf()))
+                }
+
                 startActivity(Intent(requireContext(), MainActivity::class.java))
                 finishAffinity(requireActivity())
             }
