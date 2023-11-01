@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-parcelize")
+    id ("kotlin-kapt")
 }
 
 android {
@@ -56,4 +57,11 @@ dependencies {
     implementation("com.tbuonomo:dotsindicator:4.3")
 
     implementation("com.github.ismaeldivita:chip-navigation-bar:1.4.0")
+
+    val roomVersion = "2.5.2"
+    implementation("androidx.room:room-runtime:$roomVersion")
+    annotationProcessor("androidx.room:room-compiler:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 }
