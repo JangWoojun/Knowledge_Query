@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/all" android:title="전체" />
+    <item android:id="@+id/bookmark" android:title="북마크" />
+    <item android:id="@+id/classic_novel" android:title="고전 소설" />
+    <item android:id="@+id/fairy_tale" android:title="전래 동화" />
+    <item android:id="@+id/poem" android:title="고전 시" />
+    <item android:id="@+id/social_news" android:title="사회 뉴스" />
+    <item android:id="@+id/it_news" android:title="IT 뉴스" />
+    <item android:id="@+id/daily_news" android:title="생활 뉴스" />
+</menu>
