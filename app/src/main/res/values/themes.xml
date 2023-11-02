@@ -39,5 +39,11 @@
         <item name="android:backgroundTint">@color/white</item>
     </style>
 
+    <style name="CustomPopupMenu" parent="Widget.AppCompat.PopupMenu">
+        <item name="android:textColor">@color/text_black</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+    </style>
+
 
 </resources>
