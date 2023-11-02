@@ -510,7 +510,7 @@ class HomeFragment : Fragment() {
                     } else {
                         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                     }
-                }, 130)
+                }, 250)
             }
 
 
