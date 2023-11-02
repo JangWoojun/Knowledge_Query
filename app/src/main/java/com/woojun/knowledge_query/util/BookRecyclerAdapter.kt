@@ -19,7 +19,7 @@ class BookRecyclerAdapter(private val bookList: List<BookInfo>, private val type
             binding.apply {
                 bookItem.setOnClickListener {
                     val bundle = Bundle()
-                    bundle.putParcelable("book info", bookList[handler.position])
+                    bundle.putParcelable("book info", filteredBookList[handler.adapterPosition])
 
                     if (type == BookType.Category) {
                         parent.findNavController().navigate(R.id.action_home_to_bookInfoFragment, bundle)
