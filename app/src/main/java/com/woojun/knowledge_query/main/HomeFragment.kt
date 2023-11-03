@@ -21,6 +21,7 @@ import com.woojun.knowledge_query.util.BookInfo
 import com.woojun.knowledge_query.util.BookRecyclerAdapter
 import com.woojun.knowledge_query.util.BookType
 import com.woojun.knowledge_query.util.BookType.*
+import com.woojun.knowledge_query.util.MyApplication
 import com.woojun.knowledge_query.util.Space
 import com.woojun.knowledge_query.util.SpacesItemDecoration
 
@@ -503,13 +504,15 @@ class HomeFragment : Fragment() {
 
         binding.apply {
 
-            switchMode.isChecked = isNightModeActive(requireContext())
+            switchMode.isChecked = MyApplication.prefs.isDarkMode()
             switchMode.setOnCheckedChangeListener { _, isChecked ->
                 Handler().postDelayed({
                     activity?.let { activity ->
                         val nightMode = if (isChecked) {
+                            MyApplication.prefs.setMode(true)
                             AppCompatDelegate.MODE_NIGHT_YES
                         } else {
+                            MyApplication.prefs.setMode(false)
                             AppCompatDelegate.MODE_NIGHT_NO
                         }
                         (activity as? AppCompatActivity)?.delegate?.localNightMode = nightMode
