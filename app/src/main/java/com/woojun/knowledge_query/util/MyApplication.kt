@@ -29,4 +29,12 @@ class PreferenceUtil(context: Context) {
     fun notFirst() {
         prefs.edit().putBoolean("isFirst", true).apply()
     }
+
+    fun isDarkMode(): Boolean {
+        return prefs.getBoolean("isDarkMode", false)
+    }
+
+    fun setMode(isDarkMode: Boolean) {
+        prefs.edit().putBoolean("isDarkMode", isDarkMode).apply()
+    }
 }
