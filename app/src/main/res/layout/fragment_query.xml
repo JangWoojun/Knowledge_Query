@@ -208,7 +208,7 @@
         android:textColor="@color/sub_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0/10000자"
+        android:text="0/10000"
         android:textSize="12sp"
         android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
