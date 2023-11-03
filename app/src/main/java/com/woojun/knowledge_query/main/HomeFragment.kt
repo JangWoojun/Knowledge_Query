@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
@@ -505,10 +506,14 @@ class HomeFragment : Fragment() {
             switchMode.isChecked = isNightModeActive(requireContext())
             switchMode.setOnCheckedChangeListener { _, isChecked ->
                 Handler().postDelayed({
-                    if (isChecked) {
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                    } else {
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                    activity?.let { activity ->
+                        val nightMode = if (isChecked) {
+                            AppCompatDelegate.MODE_NIGHT_YES
+                        } else {
+                            AppCompatDelegate.MODE_NIGHT_NO
+                        }
+                        (activity as? AppCompatActivity)?.delegate?.localNightMode = nightMode
+                        activity.recreate()
                     }
                 }, 250)
             }
