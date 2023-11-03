@@ -74,7 +74,7 @@
             style="@style/SearchColor"
             app:cardCornerRadius="10dp"
             android:layout_width="match_parent"
-            android:layout_height="50dp">
+            android:layout_height="55dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/book_name_layout"
