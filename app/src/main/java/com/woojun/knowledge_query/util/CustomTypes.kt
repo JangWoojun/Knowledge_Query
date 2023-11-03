@@ -47,7 +47,7 @@ class TypeConverter {
 data class User(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-    val bookmark: MutableList<BookInfo>
+    val myBookList: MutableList<BookInfo>
 )
 
 data class PagerItem(
@@ -65,7 +65,8 @@ data class BookInfo(
     val overview: String,
     val aboutAuthor: String,
     var url: String = "",
-    var isDownload: Boolean = false
+    var isDownload: Boolean = false,
+    var bookmark: Boolean = false
 ): Parcelable
 
 data class Space(

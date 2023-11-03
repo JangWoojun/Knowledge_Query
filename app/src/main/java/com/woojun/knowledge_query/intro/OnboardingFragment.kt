@@ -87,7 +87,7 @@ class OnboardingFragment : Fragment() {
                     val db = AppDatabase.getDatabase(requireContext())
                     val userDao = db?.userDao()
 
-                    userDao!!.insertUser(User(bookmark = mutableListOf()))
+                    userDao!!.insertUser(User(myBookList = mutableListOf()))
                 }
 
                 startActivity(Intent(requireContext(), MainActivity::class.java))

@@ -44,42 +44,6 @@ class BookInfoFragment : Fragment() {
             overviewText.text = item.overview
             aboutAuthorText.text = item.aboutAuthor
 
-            CoroutineScope(Dispatchers.IO).launch {
-                val db = AppDatabase.getDatabase(requireContext())
-                val user = db?.userDao()!!.getUser()
-
-                withContext(Dispatchers.Main) {
-                    if (user.bookmark.contains(item)) {
-                        bookmark.setImageResource(R.drawable.fill_bookmark_icon)
-                    } else {
-                        bookmark.setImageResource(R.drawable.bookmark_icon)
-                    }
-                }
-
-            }
-
-            bookmarkButton.setOnClickListener {
-                CoroutineScope(Dispatchers.IO).launch {
-                    val db = AppDatabase.getDatabase(requireContext())
-                    val userDao = db?.userDao()
-                    val user = db?.userDao()!!.getUser()
-
-                    if (user.bookmark.contains(item)) {
-                        user.bookmark.removeAll { it == item }
-                        withContext(Dispatchers.Main){
-                            bookmark.setImageResource(R.drawable.bookmark_icon)
-                        }
-                    } else {
-                        user.bookmark.add(item)
-                        withContext(Dispatchers.Main){
-                            bookmark.setImageResource(R.drawable.fill_bookmark_icon)
-                        }
-                    }
-
-                    userDao!!.updateUser(user)
-                }
-            }
-
         }
     }
 
