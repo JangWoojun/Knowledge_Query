@@ -52,48 +52,52 @@
                 app:lottie_fileName="logo.json"
                 app:lottie_url="@raw/logo" />
 
-            <LinearLayout
+            <FrameLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/lottieAnimationView"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:textSize="16sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="top"
                     android:layout_marginStart="5dp"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/poppins_bold"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/poppins_semibold"
                     android:text="지식 쿼리"
-                    android:textColor="@color/primary" />
+                    android:textColor="@color/primary"
+                    android:textSize="16sp" />
 
                 <LinearLayout
-                    android:layout_marginStart="5dp"
-                    android:orientation="horizontal"
+                    android:layout_marginBottom="4dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginStart="5dp"
+                    android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_gravity="center"
-                        android:src="@drawable/circle_icon"
                         android:layout_width="6dp"
                         android:layout_height="6dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/circle_icon"
                         app:tint="#3ABF38" />
 
                     <TextView
-                        android:textSize="12sp"
-                        android:layout_width="wrap_content"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:fontFamily="@font/poppins_medium"
                         android:text="Online"
-                        android:textColor="#3ABF38" />
+                        android:textColor="#3ABF38"
+                        android:textSize="12sp" />
 
                 </LinearLayout>
 
-            </LinearLayout>
+            </FrameLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -130,7 +134,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="45dp"
+        android:layout_marginBottom="35dp"
         app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout4"
         app:layout_constraintEnd_toEndOf="parent"
@@ -204,16 +208,15 @@
 
 
     <TextView
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="5dp"
-        android:textColor="@color/sub_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0/10000"
+        android:textColor="@color/sub_text"
         android:textSize="12sp"
-        android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/materialCardView"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
+        app:layout_constraintBottom_toTopOf="@+id/materialCardView"
+        app:layout_constraintEnd_toEndOf="@+id/materialCardView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
