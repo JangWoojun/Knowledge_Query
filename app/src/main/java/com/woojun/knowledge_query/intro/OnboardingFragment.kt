@@ -1,24 +1,26 @@
 package com.woojun.knowledge_query.intro
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat.finishAffinity
+import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
-import com.woojun.knowledge_query.main.MainActivity
-import com.woojun.knowledge_query.util.OnboardingRecyclerAdapter
-import com.woojun.knowledge_query.util.PagerItem
 import com.woojun.knowledge_query.R
 import com.woojun.knowledge_query.databinding.FragmentOnboardingBinding
+import com.woojun.knowledge_query.main.MainActivity
 import com.woojun.knowledge_query.util.AppDatabase
 import com.woojun.knowledge_query.util.MyApplication
+import com.woojun.knowledge_query.util.OnboardingRecyclerAdapter
+import com.woojun.knowledge_query.util.PagerItem
 import com.woojun.knowledge_query.util.User
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+
 
 class OnboardingFragment : Fragment() {
 
@@ -68,6 +70,18 @@ class OnboardingFragment : Fragment() {
 
             startButton.setOnClickListener {
                 MyApplication.prefs.notFirst()
+
+                when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
+                    Configuration.UI_MODE_NIGHT_YES -> {
+                        MyApplication.prefs.setMode(true)
+                    }
+                    Configuration.UI_MODE_NIGHT_NO -> {
+                        MyApplication.prefs.setMode(false)
+                    }
+                    Configuration.UI_MODE_NIGHT_UNDEFINED -> {
+                        MyApplication.prefs.setMode(false)
+                    }
+                }
 
                 CoroutineScope(Dispatchers.IO).launch {
                     val db = AppDatabase.getDatabase(requireContext())
