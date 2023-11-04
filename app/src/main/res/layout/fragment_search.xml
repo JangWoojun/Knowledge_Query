@@ -47,7 +47,7 @@
                    android:layout_height="48dp"
                    android:layout_marginStart="8dp"
                    android:background="@null"
-                   android:fontFamily="@font/poppins_reqular"
+                   android:fontFamily="@font/poppins_regular"
                    android:hint="검색하기"
                    android:imeOptions="actionSearch"
                    android:inputType="text"

@@ -8,11 +8,15 @@
     tools:context=".main.HomeFragment">
 
     <LinearLayout
+        android:id="@+id/container"
+        android:clickable="true"
+        android:focusableInTouchMode="true"
         style="@style/BackgroundColor"
         android:outlineProvider="none"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:focusable="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_marginHorizontal="26dp"
@@ -42,8 +46,6 @@
                     style="@style/TextColor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
                     android:fontFamily="@font/poppins_semibold"
                     android:text="오늘은 또 어떤 글을\n지식쿼리와 함께 읽어볼까요?"
                     android:textSize="24sp" />
@@ -95,7 +97,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/book_name_input"
                     android:background="@null"
-                    android:fontFamily="@font/poppins_reqular"
+                    android:fontFamily="@font/poppins_regular"
                     android:textSize="16sp"
                     style="@style/TextColor"
                     android:imeOptions="actionSearch"
@@ -148,7 +150,7 @@
                             style="@style/TextColor"
                             android:id="@+id/classic_novel_text"
                             android:textSize="16sp"
-                            android:fontFamily="@font/poppins_reqular"
+                            android:fontFamily="@font/poppins_regular"
                             android:text="고전 소설"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
@@ -182,7 +184,7 @@
                             android:id="@+id/fairy_tale_text"
                             style="@style/SubTextColor"
                             android:textSize="16sp"
-                            android:fontFamily="@font/poppins_reqular"
+                            android:fontFamily="@font/poppins_regular"
                             android:text="전래 동화"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
@@ -218,7 +220,7 @@
                             android:id="@+id/poem_text"
                             style="@style/SubTextColor"
                             android:textSize="16sp"
-                            android:fontFamily="@font/poppins_reqular"
+                            android:fontFamily="@font/poppins_regular"
                             android:text="고전 시"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
@@ -253,7 +255,7 @@
                             android:id="@+id/social_news_text"
                             style="@style/SubTextColor"
                             android:textSize="16sp"
-                            android:fontFamily="@font/poppins_reqular"
+                            android:fontFamily="@font/poppins_regular"
                             android:text="사회 뉴스"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
@@ -289,7 +291,7 @@
                             android:id="@+id/it_news_text"
                             style="@style/SubTextColor"
                             android:textSize="16sp"
-                            android:fontFamily="@font/poppins_reqular"
+                            android:fontFamily="@font/poppins_regular"
                             android:text="IT 뉴스"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
@@ -324,7 +326,7 @@
                             android:id="@+id/daily_news_text"
                             style="@style/SubTextColor"
                             android:textSize="16sp"
-                            android:fontFamily="@font/poppins_reqular"
+                            android:fontFamily="@font/poppins_regular"
                             android:text="생활 뉴스"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
