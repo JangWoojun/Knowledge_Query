@@ -10,11 +10,14 @@
     tools:context=".main.MyLibraryFragment">
 
     <LinearLayout
+        android:id="@+id/container"
+        android:clickable="true"
+        android:focusableInTouchMode="true"
         android:orientation="vertical"
-        android:layout_marginTop="30dp"
         style="@style/BackgroundColor"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:focusable="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_marginHorizontal="26dp"
@@ -29,7 +32,6 @@
                 android:fontFamily="@font/poppins_semibold"
                 android:text="내 서재"
                 android:textSize="24sp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -84,7 +86,7 @@
                         android:layout_height="48dp"
                         android:layout_marginStart="8dp"
                         android:background="@null"
-                        android:fontFamily="@font/poppins_reqular"
+                        android:fontFamily="@font/poppins_regular"
                         android:hint="검색하기"
                         android:imeOptions="actionSearch"
                         android:inputType="text"
@@ -108,72 +110,280 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.flexbox.FlexboxLayout
+            android:layout_marginTop="20dp"
+            android:id="@+id/category"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:justifyContent="center"
+            app:flexWrap="wrap">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/category_button"
-                style="@style/CardViewBackgroundColor"
+            <LinearLayout
+                android:layout_margin="8dp"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:gravity="center"
+                android:id="@+id/all_button"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="26dp"
-                android:layout_marginTop="20dp"
-                app:cardCornerRadius="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:strokeColor="#E8D6FF">
+                android:layout_height="wrap_content">
 
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/category_text"
-                        android:layout_width="105dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="16dp"
-                        android:layout_marginStart="24dp"
-                        android:fontFamily="@font/poppins_medium"
-                        android:text="전체"
-                        android:textColor="@color/primary"
-                        android:textSize="18sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
+                <androidx.cardview.widget.CardView
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="10dp"
+                    android:id="@+id/all_button_background"
+                    android:backgroundTint="@color/primary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="10dp"
-                        android:gravity="center"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/category_text"
-                        app:layout_constraintTop_toTopOf="parent">
+                        android:layout_height="wrap_content">
 
-                        <ImageView
-                            android:id="@+id/drop_image"
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
-                            android:rotation="90"
-                            android:src="@drawable/arrow_icon"
-                            app:tint="@color/primary" />
-
+                        <TextView
+                            android:id="@+id/all_button_text"
+                            android:text="전체"
+                            android:textSize="14sp"
+                            android:paddingVertical="10dp"
+                            android:paddingHorizontal="26dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:textColor="@color/white"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
                     </LinearLayout>
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_margin="8dp"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:gravity="center"
+                android:id="@+id/bookmark_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="10dp"
+                    android:id="@+id/bookmark_button_background"
+                    android:backgroundTint="@color/toggle_backgroundColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/bookmark_button_text"
+                        android:text="북마크"
+                        android:textSize="14sp"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="26dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        style="@style/TextColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_margin="8dp"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:gravity="center"
+                android:id="@+id/classic_novel_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="10dp"
+                    android:id="@+id/classic_novel_button_background"
+                    android:backgroundTint="@color/toggle_backgroundColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/classic_novel_button_text"
+                        android:text="고전 소설"
+                        android:textSize="14sp"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="26dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        style="@style/TextColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_margin="8dp"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:gravity="center"
+                android:id="@+id/fairy_tale_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="10dp"
+                    android:id="@+id/fairy_tale_button_background"
+                    android:backgroundTint="@color/toggle_backgroundColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/fairy_tale_button_text"
+                        android:text="전래 동화"
+                        android:textSize="14sp"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="26dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        style="@style/TextColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_margin="8dp"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:gravity="center"
+                android:id="@+id/poem_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="10dp"
+                    android:id="@+id/poem_button_background"
+                    android:backgroundTint="@color/toggle_backgroundColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/poem_button_text"
+                        android:text="고전 시"
+                        android:textSize="14sp"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="26dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        style="@style/TextColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_margin="8dp"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:gravity="center"
+                android:id="@+id/social_news_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="10dp"
+                    android:id="@+id/social_news_button_background"
+                    android:backgroundTint="@color/toggle_backgroundColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/social_news_button_text"
+                        android:text="사회 뉴스"
+                        android:textSize="14sp"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="26dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        style="@style/TextColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_margin="8dp"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:gravity="center"
+                android:id="@+id/it_news_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="10dp"
+                    android:id="@+id/it_news_button_background"
+                    android:backgroundTint="@color/toggle_backgroundColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/it_news_button_text"
+                        android:text="IT 뉴스"
+                        android:textSize="14sp"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="26dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        style="@style/TextColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_margin="8dp"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:gravity="center"
+                android:id="@+id/daily_news_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="10dp"
+                    android:id="@+id/daily_news_button_background"
+                    android:backgroundTint="@color/toggle_backgroundColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/daily_news_button_text"
+                        android:text="생활 뉴스"
+                        android:textSize="14sp"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="26dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        style="@style/TextColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
 
 
-            </com.google.android.material.card.MaterialCardView>
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.flexbox.FlexboxLayout>
 
         <RelativeLayout
             android:layout_marginBottom="50dp"
