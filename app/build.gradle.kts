@@ -64,4 +64,6 @@ dependencies {
     kapt("androidx.room:room-compiler:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    implementation("com.google.android.flexbox:flexbox:3.0.0")
 }
