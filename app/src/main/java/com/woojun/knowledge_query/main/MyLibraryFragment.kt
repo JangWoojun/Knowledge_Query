@@ -496,47 +496,6 @@ class MyLibraryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
-            categoryButton.setOnClickListener { view ->
-                val rotateAnimator1 = ObjectAnimator.ofFloat(dropImage, "rotation", dropImage.rotation, dropImage.rotation - 180f)
-                rotateAnimator1.duration = 300
-                rotateAnimator1.start()
-
-                val wrapper = ContextThemeWrapper(requireActivity(), R.style.CustomPopupMenu)
-                val popupMenu = PopupMenu(wrapper, view)
-
-                popupMenu.menuInflater.inflate(R.menu.category_menu, popupMenu.menu)
-
-                popupMenu.setOnMenuItemClickListener { menuItem ->
-                    when (menuItem.itemId) {
-                        R.id.classic_novel -> {
-                            true
-                        }
-                        R.id.fairy_tale -> {
-                            true
-                        }
-                        R.id.poem -> {
-                            true
-                        }
-                        R.id.social_news -> {
-                            true
-                        }
-                        R.id.it_news -> {
-                            true
-                        }
-                        R.id.daily_news -> {
-                            true
-                        }
-                        else -> false
-                    }
-                }
-                popupMenu.setOnDismissListener {
-                    val rotateAnimator2 = ObjectAnimator.ofFloat(dropImage, "rotation", dropImage.rotation, dropImage.rotation - -180f)
-                    rotateAnimator2.duration = 300
-                    rotateAnimator2.start()
-                }
-
-                popupMenu.show()
-            }
 
             searchButton.setOnClickListener {
                 textView.visibility = View.GONE
@@ -565,15 +524,6 @@ class MyLibraryFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    private fun hideKeyboard() {
-        val inputMethodManager = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
-        val currentFocusedView = activity?.currentFocus
-        currentFocusedView?.let {
-            inputMethodManager?.hideSoftInputFromWindow(it.windowToken, 0)
-        }
-
     }
 
     private fun showKeyboard(context: Context, view: View) {
