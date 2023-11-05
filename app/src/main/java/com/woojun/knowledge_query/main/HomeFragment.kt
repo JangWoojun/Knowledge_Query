@@ -573,6 +573,14 @@ class HomeFragment : Fragment() {
                 showKeyboard(requireContext(), bookNameInput)
             }
 
+            container.setOnTouchListener { it, _ ->
+                val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(it.windowToken, 0)
+
+                it.clearFocus()
+                true
+            }
+
         }
     }
 
@@ -705,14 +713,5 @@ class HomeFragment : Fragment() {
         val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.showSoftInput(view, 0)
     }
-
-    private fun isNightModeActive(context: Context): Boolean {
-        return when (context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
-            Configuration.UI_MODE_NIGHT_YES -> true
-            Configuration.UI_MODE_NIGHT_NO -> false
-            else -> false
-        }
-    }
-
 
 }
