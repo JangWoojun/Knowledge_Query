@@ -482,6 +482,15 @@ class MyLibraryFragment : Fragment() {
 
     )
 
+    private var isAllChecked: Boolean = true
+    private var isBookmarkChecked: Boolean = false
+    private var isClassicNovelChecked: Boolean = false
+    private var isFairyTaleChecked: Boolean = false
+    private var isPoemChecked: Boolean = false
+    private var isSocialNewsChecked: Boolean = false
+    private var isItNewsChecked: Boolean = false
+    private var isDailyNewsChecked: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -511,6 +520,46 @@ class MyLibraryFragment : Fragment() {
             searchInputButton.setOnClickListener {
                 bookNameInput.requestFocus()
                 showKeyboard(requireContext(), bookNameInput)
+            }
+
+            allButton.setOnClickListener {
+                selectButton(allButtonBackground, allButtonText, isAllChecked)
+                isAllChecked = !isAllChecked
+            }
+
+            bookmarkButton.setOnClickListener {
+                selectButton(bookmarkButtonBackground, bookmarkButtonText, isBookmarkChecked)
+                isBookmarkChecked = !isBookmarkChecked
+            }
+
+            classicNovelButton.setOnClickListener {
+                selectButton(classicNovelButtonBackground, classicNovelButtonText, isClassicNovelChecked)
+                isClassicNovelChecked = !isClassicNovelChecked
+            }
+
+            fairyTaleButton.setOnClickListener {
+                selectButton(fairyTaleButtonBackground, fairyTaleButtonText, isFairyTaleChecked)
+                isFairyTaleChecked = !isFairyTaleChecked
+            }
+
+            poemButton.setOnClickListener {
+                selectButton(poemButtonBackground, poemButtonText, isPoemChecked)
+                isPoemChecked = !isPoemChecked
+            }
+
+            socialNewsButton.setOnClickListener {
+                selectButton(socialNewsButtonBackground, socialNewsButtonText, isSocialNewsChecked)
+                isSocialNewsChecked = !isSocialNewsChecked
+            }
+
+            itNewsButton.setOnClickListener {
+                selectButton(itNewsButtonBackground, itNewsButtonText, isItNewsChecked)
+                isItNewsChecked = !isItNewsChecked
+            }
+
+            dailyNewsButton.setOnClickListener {
+                selectButton(dailyNewsButtonBackground, dailyNewsButtonText, isDailyNewsChecked)
+                isDailyNewsChecked = !isDailyNewsChecked
             }
 
             val adapter = BookRecyclerAdapter(list, BookType.Category)
@@ -546,4 +595,32 @@ class MyLibraryFragment : Fragment() {
         val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.showSoftInput(view, 0)
     }
+
+    private fun selectButton(view: View, text: TextView, type: Boolean) {
+        binding.apply {
+            val colorChangeDuration = 250L
+            val fadeOut = ObjectAnimator.ofFloat(view, "alpha", 1f, 0f).setDuration(colorChangeDuration / 2)
+            val fadeIn = ObjectAnimator.ofFloat(view, "alpha", 0f, 1f).setDuration(colorChangeDuration / 2)
+
+            fadeOut.addListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator) {
+                    if (type) {
+                        view.backgroundTintList = ContextCompat.getColorStateList(view.context, R.color.primary)
+                        text.setTextColor(resources.getColor(R.color.white, null))
+                    } else {
+                        view.backgroundTintList = ContextCompat.getColorStateList(view.context, R.color.toggle_backgroundColor)
+                        text.setTextColor(resources.getColor(R.color.text_black, null))
+                    }
+                    fadeIn.start()
+                }
+            })
+
+            fadeOut.start()
+
+            view.animate().scaleX(0.9f).scaleY(0.9f).setDuration(150).withEndAction {
+                view.animate().scaleX(1f).scaleY(1f).setDuration(150).start()
+            }.start()
+        }
+    }
+
 }
