@@ -527,7 +527,7 @@ class HomeFragment : Fragment() {
             categoryList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             adapter1.filterByCategory(ClassicNovel)
             categoryList.adapter = adapter1
-            categoryList.addItemDecoration(SpacesItemDecoration(Space(0,  14, 0, 0, 16, 16), Category))
+            categoryList.addItemDecoration(SpacesItemDecoration(Space(0,  14, 0, 0, 14, 16), Category))
 
             val adapter2 = BookRecyclerAdapter(list, My)
 
