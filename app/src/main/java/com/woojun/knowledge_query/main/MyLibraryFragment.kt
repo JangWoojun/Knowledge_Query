@@ -604,7 +604,7 @@ class MyLibraryFragment : Fragment() {
 
             fadeOut.addListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator) {
-                    if (type) {
+                    if (!type) {
                         view.backgroundTintList = ContextCompat.getColorStateList(view.context, R.color.primary)
                         text.setTextColor(resources.getColor(R.color.white, null))
                     } else {
