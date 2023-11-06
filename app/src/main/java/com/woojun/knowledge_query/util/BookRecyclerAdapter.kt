@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.woojun.knowledge_query.R
 import com.woojun.knowledge_query.databinding.BookItemBinding
 
@@ -51,6 +52,9 @@ class BookRecyclerAdapter(private val bookList: List<BookInfo>, private val type
                 title.text = bookInfo.title
                 writer.text = bookInfo.writer
                 image.setImageResource(bookInfo.image)
+                Glide.with(binding.root.context)
+                    .load(bookInfo.image)
+                    .into(image)
 
                 if (type != BookType.Category) {
                     title.gravity = Gravity.CENTER

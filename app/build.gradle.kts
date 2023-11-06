@@ -68,4 +68,5 @@ dependencies {
 
     implementation("com.google.android.flexbox:flexbox:3.0.0")
     implementation(platform("com.google.firebase:firebase-bom:32.5.0"))
+    implementation("com.github.bumptech.glide:glide:4.16.0")
 }
