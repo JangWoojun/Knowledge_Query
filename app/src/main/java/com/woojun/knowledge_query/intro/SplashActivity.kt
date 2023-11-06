@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
+import androidx.appcompat.app.AppCompatDelegate
 import com.woojun.knowledge_query.R
 import com.woojun.knowledge_query.main.MainActivity
 import com.woojun.knowledge_query.util.MyApplication
@@ -14,6 +15,13 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+
+        val check = MyApplication.prefs.isDarkMode()
+        if (check) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
 
         Handler().postDelayed({
             if (MyApplication.prefs.isFirst()) {
