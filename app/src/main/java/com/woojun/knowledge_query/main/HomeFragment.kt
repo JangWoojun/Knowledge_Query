@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.database
 import com.woojun.knowledge_query.R
 import com.woojun.knowledge_query.databinding.FragmentHomeBinding
+import com.woojun.knowledge_query.util.AppDatabase
 import com.woojun.knowledge_query.util.BookInfo
 import com.woojun.knowledge_query.util.BookRecyclerAdapter
 import com.woojun.knowledge_query.util.BookType
@@ -29,6 +30,10 @@ import com.woojun.knowledge_query.util.BookViewModel
 import com.woojun.knowledge_query.util.MyApplication
 import com.woojun.knowledge_query.util.Space
 import com.woojun.knowledge_query.util.SpacesItemDecoration
+import com.woojun.knowledge_query.util.User
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
 
@@ -76,19 +81,23 @@ class HomeFragment : Fragment() {
             viewModel = ViewModelProvider(requireActivity())[BookViewModel::class.java]
             viewModel.fetchData()
             viewModel.dataList.observe(requireActivity()) { list ->
-                val adapter1 = BookRecyclerAdapter(list, Category)
+                val adapter = BookRecyclerAdapter(list, Category)
 
                 categoryList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-                adapter1.filterByCategory(ClassicNovel)
-                categoryList.adapter = adapter1
+                adapter.filterByCategory(ClassicNovel)
+                categoryList.adapter = adapter
             }
             categoryList.addItemDecoration(SpacesItemDecoration(Space(0,  14, 0, 0, 14, 16), Category))
 
-            val adapter2 = BookRecyclerAdapter(listOf(), My)
+            CoroutineScope(Dispatchers.IO).launch {
+                val db = AppDatabase.getDatabase(requireContext())
+                val list = db?.userDao()!!.getUser().myBookList
+                val adapter = BookRecyclerAdapter(list, My)
 
-            recentlyList.layoutManager = GridLayoutManager(requireContext(), 2)
-            adapter2.filterByCategory(My)
-            recentlyList.adapter = adapter2
+                recentlyList.layoutManager = GridLayoutManager(requireContext(), 2)
+                adapter.filterByCategory(My)
+                recentlyList.adapter = adapter
+            }
             recentlyList.addItemDecoration(SpacesItemDecoration(Space(0,  0, 0, 16, 16, 16), My))
 
             classicNovelButton.setOnClickListener {
