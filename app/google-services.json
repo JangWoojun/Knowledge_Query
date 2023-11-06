@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "477112540579",
+    "project_id": "knowledge-query-c3a02",
+    "storage_bucket": "knowledge-query-c3a02.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:477112540579:android:a1abc9ab7ec8c751624e16",
+        "android_client_info": {
+          "package_name": "com.woojun.knowledge_query"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMIlRcWBIxTS8FccqpMIoNGe3yA8ieey0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
