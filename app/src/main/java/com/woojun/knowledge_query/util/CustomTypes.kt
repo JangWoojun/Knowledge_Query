@@ -67,12 +67,12 @@ data class PagerItem(
 
 @Parcelize
 data class BookInfo(
-    val title: String,
-    val writer: String,
-    val image: Int,
-    val category: BookType,
-    val overview: String,
-    val aboutAuthor: String,
+    val title: String = "",
+    val writer: String = "",
+    val image: Int = 0,
+    val category: BookType = BookType.Category,
+    val overview: String = "",
+    val aboutAuthor: String = "",
     var url: String = "",
     var isDownload: Boolean = false,
     var bookmark: Boolean = false
