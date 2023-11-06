@@ -43,6 +43,15 @@ class TypeConverter {
     }
 }
 
+data class Chat(
+    val chatType: ChatType,
+    val message: String
+)
+
+enum class ChatType {
+    Bot, User
+}
+
 @Entity
 data class User(
     @PrimaryKey(autoGenerate = true)
