@@ -5,14 +5,12 @@ import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.woojun.knowledge_query.R
@@ -484,7 +482,7 @@ class MyLibraryFragment : Fragment() {
 
     )
 
-    private var isAllChecked: Boolean = true
+    private var isMyChecked: Boolean = true
     private var isBookmarkChecked: Boolean = false
     private var isClassicNovelChecked: Boolean = false
     private var isFairyTaleChecked: Boolean = false
@@ -524,9 +522,9 @@ class MyLibraryFragment : Fragment() {
                 showKeyboard(requireContext(), bookNameInput)
             }
 
-            allButton.setOnClickListener {
-                isAllChecked = !isAllChecked
-                selectButton(allButtonBackground, allButtonText, isAllChecked)
+            myButton.setOnClickListener {
+                isMyChecked = !isMyChecked
+                selectButton(myButtonBackground, myButtonText, isMyChecked)
             }
 
             bookmarkButton.setOnClickListener {
@@ -607,60 +605,8 @@ class MyLibraryFragment : Fragment() {
             fadeOut.addListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator) {
                     if (type) {
-                        if ((isBookmarkChecked &&
-                            isClassicNovelChecked &&
-                            isFairyTaleChecked &&
-                            isPoemChecked &&
-                            isSocialNewsChecked &&
-                            isItNewsChecked &&
-                            isDailyNewsChecked)|| view == allButtonBackground) {
-                            allButtonBackground.backgroundTintList = ContextCompat.getColorStateList(view.context, R.color.primary)
-                            allButtonText.setTextColor(resources.getColor(R.color.white, null))
-
-                            bookmarkButtonBackground.backgroundTintList = ContextCompat.getColorStateList(view.context, R.color.toggle_backgroundColor)
-                            bookmarkButtonText.setTextColor(resources.getColor(R.color.text_black, null))
-
-                            classicNovelButtonBackground.backgroundTintList = ContextCompat.getColorStateList(view.context, R.color.toggle_backgroundColor)
-                            classicNovelButtonText.setTextColor(resources.getColor(R.color.text_black, null))
-
-                            fairyTaleButtonBackground.backgroundTintList = ContextCompat.getColorStateList(view.context, R.color.toggle_backgroundColor)
-                            fairyTaleButtonText.setTextColor(resources.getColor(R.color.text_black, null))
-
-                            poemButtonBackground.backgroundTintList = ContextCompat.getColorStateList(view.context, R.color.toggle_backgroundColor)
-                            poemButtonText.setTextColor(resources.getColor(R.color.text_black, null))
-
-                            socialNewsButtonBackground.backgroundTintList = ContextCompat.getColorStateList(view.context, R.color.toggle_backgroundColor)
-                            socialNewsButtonText.setTextColor(resources.getColor(R.color.text_black, null))
-
-                            itNewsButtonBackground.backgroundTintList = ContextCompat.getColorStateList(view.context, R.color.toggle_backgroundColor)
-                            itNewsButtonText.setTextColor(resources.getColor(R.color.text_black, null))
-
-                            dailyNewsButtonBackground.backgroundTintList = ContextCompat.getColorStateList(view.context, R.color.toggle_backgroundColor)
-                            dailyNewsButtonText.setTextColor(resources.getColor(R.color.text_black, null))
-
-                            isAllChecked = true
-                            isBookmarkChecked = false
-                            isClassicNovelChecked = false
-                            isFairyTaleChecked = false
-                            isPoemChecked = false
-                            isSocialNewsChecked = false
-                            isItNewsChecked = false
-                            isDailyNewsChecked = false
-                        }
-                        else if (view != allButtonBackground && isAllChecked) {
-                            allButtonBackground.backgroundTintList = ContextCompat.getColorStateList(view.context, R.color.toggle_backgroundColor)
-                            allButtonText.setTextColor(resources.getColor(R.color.text_black, null))
-
-                            view.backgroundTintList = ContextCompat.getColorStateList(view.context, R.color.primary)
-                            text.setTextColor(resources.getColor(R.color.white, null))
-
-                            isAllChecked = false
-                        }
-                        else {
-                            view.backgroundTintList = ContextCompat.getColorStateList(view.context, R.color.primary)
-                            text.setTextColor(resources.getColor(R.color.white, null))
-                        }
-
+                        view.backgroundTintList = ContextCompat.getColorStateList(view.context, R.color.primary)
+                        text.setTextColor(resources.getColor(R.color.white, null))
                     }
                     else {
                         view.backgroundTintList = ContextCompat.getColorStateList(view.context, R.color.toggle_backgroundColor)
