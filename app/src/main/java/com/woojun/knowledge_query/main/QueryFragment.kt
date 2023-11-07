@@ -36,8 +36,6 @@ class QueryFragment : Fragment() {
         binding.apply {
             chatList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, true)
             chatList.adapter = ChatRecyclerAdapter(list)
-
-            chatList.smoothScrollToPosition(0)
         }
     }
 
