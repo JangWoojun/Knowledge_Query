@@ -91,7 +91,11 @@ class HomeFragment : Fragment() {
 
             CoroutineScope(Dispatchers.IO).launch {
                 val db = AppDatabase.getDatabase(requireContext())
-                val list = db?.userDao()!!.getUser().myBookList
+                var list = db?.userDao()!!.getUser().myBookList
+
+                if (list.size > 4) {
+                    list = list.slice(0..3).toMutableList()
+                }
                 val adapter = BookRecyclerAdapter(list, My)
 
                 recentlyList.layoutManager = GridLayoutManager(requireContext(), 2)
