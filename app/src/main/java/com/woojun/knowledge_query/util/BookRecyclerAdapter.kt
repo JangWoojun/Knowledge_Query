@@ -45,6 +45,14 @@ class BookRecyclerAdapter(private val bookList: List<BookInfo>, private val type
         notifyDataSetChanged()
     }
 
+    fun selectButtonByCategory(category: Set<BookType>) {
+        filteredBookList = bookList.filter { it.category in category }
+        if (BookType.Bookmark in category) {
+            filteredBookList = filteredBookList.filter { it.bookmark }
+        }
+        notifyDataSetChanged()
+    }
+
     class BookViewHolder(private val binding: BookItemBinding):
         RecyclerView.ViewHolder(binding.root) {
         fun bind(bookInfo: BookInfo, type: BookType) {
