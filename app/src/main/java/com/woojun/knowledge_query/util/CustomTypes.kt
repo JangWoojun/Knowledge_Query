@@ -88,5 +88,5 @@ data class Space(
 )
 
 enum class BookType {
-    Category, My, ClassicNovel, FairyTale, Poem, SocialNews, ItNews, DailyNews
+    Category, My, Bookmark, ClassicNovel, FairyTale, Poem, SocialNews, ItNews, DailyNews
 }
