@@ -45,7 +45,8 @@ class TypeConverter {
 
 data class Chat(
     val chatType: ChatType,
-    val message: String
+    var message: String,
+    var isAnswerEnd: Boolean = false
 )
 
 enum class ChatType {
