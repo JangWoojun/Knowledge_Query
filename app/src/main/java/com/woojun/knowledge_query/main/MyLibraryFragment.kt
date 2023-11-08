@@ -129,7 +129,7 @@ class MyLibraryFragment : Fragment() {
                 selectButton(dailyNewsButtonBackground, dailyNewsButtonText, isDailyNewsChecked, BookType.DailyNews)
             }
 
-            bookList.addItemDecoration(SpacesItemDecoration(Space(0,  0, 0, 16, 16, 16), BookType.My))
+            bookList.addItemDecoration(SpacesItemDecoration(Space(0,  0, 0, 16, 0, 16, 16, 0), BookType.My))
 
             bookNameLayout.setOnClickListener {
                 bookNameInput.requestFocus()

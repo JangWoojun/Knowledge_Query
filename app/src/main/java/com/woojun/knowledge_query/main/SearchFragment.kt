@@ -507,7 +507,7 @@ class SearchFragment : Fragment() {
 
             bookList.layoutManager = GridLayoutManager(requireContext(), 2)
             bookList.adapter = adapter
-            bookList.addItemDecoration(SpacesItemDecoration(Space(0,  0, 0, 16, 16, 16), BookType.My))
+            bookList.addItemDecoration(SpacesItemDecoration(Space(0,  0, 0, 16, 0, 16, 16, 0), BookType.My))
 
 
         }

@@ -22,7 +22,6 @@ import com.google.firebase.database.database
 import com.woojun.knowledge_query.R
 import com.woojun.knowledge_query.databinding.FragmentHomeBinding
 import com.woojun.knowledge_query.util.AppDatabase
-import com.woojun.knowledge_query.util.BookInfo
 import com.woojun.knowledge_query.util.BookRecyclerAdapter
 import com.woojun.knowledge_query.util.BookType
 import com.woojun.knowledge_query.util.BookType.*
@@ -30,7 +29,6 @@ import com.woojun.knowledge_query.util.BookViewModel
 import com.woojun.knowledge_query.util.MyApplication
 import com.woojun.knowledge_query.util.Space
 import com.woojun.knowledge_query.util.SpacesItemDecoration
-import com.woojun.knowledge_query.util.User
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -87,7 +85,7 @@ class HomeFragment : Fragment() {
                 adapter.filterByCategory(ClassicNovel)
                 categoryList.adapter = adapter
             }
-            categoryList.addItemDecoration(SpacesItemDecoration(Space(0,  14, 0, 0, 14, 16), Category))
+            categoryList.addItemDecoration(SpacesItemDecoration(Space(0,  14, 0, 0, 0, 14, 16, 0), Category))
 
             CoroutineScope(Dispatchers.IO).launch {
                 val db = AppDatabase.getDatabase(requireContext())
@@ -102,7 +100,7 @@ class HomeFragment : Fragment() {
                 adapter.filterByCategory(My)
                 recentlyList.adapter = adapter
             }
-            recentlyList.addItemDecoration(SpacesItemDecoration(Space(0,  0, 0, 16, 16, 16), My))
+            recentlyList.addItemDecoration(SpacesItemDecoration(Space(0,  0, 0, 16, 0, 16, 16, 0), My))
 
             classicNovelButton.setOnClickListener {
                 categoryButtonClick(ClassicNovel)
