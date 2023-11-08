@@ -13,10 +13,10 @@ class SpacesItemDecoration(private val space: Space, private val type: BookType)
         space.left = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, space.left.toFloat(), Resources.getSystem().displayMetrics).toInt()
         space.right = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, space.right.toFloat(), Resources.getSystem().displayMetrics).toInt()
         space.bottom = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, space.bottom.toFloat(), Resources.getSystem().displayMetrics).toInt()
-        space.firstTop = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, space.lastRight.toFloat(), Resources.getSystem().displayMetrics).toInt()
+        space.firstTop = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, space.firstTop.toFloat(), Resources.getSystem().displayMetrics).toInt()
         space.firstLeft = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, space.firstLeft.toFloat(), Resources.getSystem().displayMetrics).toInt()
         space.lastRight = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, space.lastRight.toFloat(), Resources.getSystem().displayMetrics).toInt()
-        space.lastBottom = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, space.lastRight.toFloat(), Resources.getSystem().displayMetrics).toInt()
+        space.lastBottom = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, space.lastBottom.toFloat(), Resources.getSystem().displayMetrics).toInt()
     }
 
     override fun getItemOffsets(
