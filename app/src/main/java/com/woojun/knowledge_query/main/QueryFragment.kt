@@ -58,6 +58,17 @@ class QueryFragment : Fragment() {
             chatList.adapter = chatAdapter
             chatList.addItemDecoration(SpacesItemDecoration(Space(0,  0, 0, 10, 30, 0, 0, 30), BookType.My))
 
+            input.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+                }
+
+                override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                    textLength.text = "${input.text.toString().length}/10000"
+                }
+
+                override fun afterTextChanged(s: Editable) {
+                }
+            })
 
         }
     }
