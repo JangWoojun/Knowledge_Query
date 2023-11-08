@@ -43,6 +43,33 @@ class TypeConverter {
     }
 }
 
+data class MRResult(
+    val result: Int,
+    val return_object: ReturnObject
+)
+
+data class ReturnObject(
+    val MRCInfo: MRCInfo
+)
+
+data class RequestBody(
+    val argument: Argument
+)
+
+data class Argument(
+    val question: String,
+    val passage: String
+)
+
+data class MRCInfo(
+    val answer: String,
+    val begin: Int,
+    val confidence: String,
+    val end: Int,
+    val passage: String,
+    val question: String
+)
+
 data class Chat(
     val chatType: ChatType,
     var message: String,
