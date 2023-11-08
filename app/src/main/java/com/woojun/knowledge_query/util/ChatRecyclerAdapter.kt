@@ -21,7 +21,7 @@ class ChatRecyclerAdapter(private val messages: MutableList<Chat>): RecyclerView
     }
 
     override fun onBindViewHolder(holder: ChatViewHolder, position: Int) {
-        holder.bind(messages[position], )
+        holder.bind(messages[position])
     }
 
     fun updateItem(position: Int, text: String, isEnd: Boolean) {
