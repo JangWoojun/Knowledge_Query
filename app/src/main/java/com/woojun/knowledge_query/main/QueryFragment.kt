@@ -32,9 +32,10 @@ class QueryFragment : Fragment() {
     private var _binding: FragmentQueryBinding? = null
     private val binding get() = _binding!!
 
-    private val list: MutableList<Chat> = mutableListOf(Chat(ChatType.Bot, "사용하시기 앞서 우선 쿼리 기능을 사용할 글을 입력해주세요", true), Chat(ChatType.Bot, "사용하시기 앞서 우선 쿼리 기능을 사용할 글을 입력해주세요", true), Chat(ChatType.Bot, "사용하시기 앞서 우선 쿼리 기능을 사용할 글을 입력해주세요", true), Chat(ChatType.Bot, "사용하시기 앞서 우선 쿼리 기능을 사용할 글을 입력해주세요", true))
+    private val list: MutableList<Chat> = mutableListOf(Chat(ChatType.Bot, "사용하시기 앞서 우선 쿼리 기능을 사용할 글을 입력해주세요", true))
     private val passageList: MutableList<Chat> = mutableListOf()
     private var isQuestion = false
+    private var isQuestionEnd = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,9 +72,11 @@ class QueryFragment : Fragment() {
             })
 
             submitButton.setOnClickListener {
-                if (input.text.toString().length >= 3) {
+                if (input.text.toString().length >= 3 && isQuestionEnd) {
                     if (isQuestion) {
+                        isQuestionEnd = false
                         chatAdapter.addItem(Chat(ChatType.User, input.text.toString()))
+                        chatAdapter.addItem(Chat(ChatType.Bot, ""))
 
                         val retrofit = RetrofitClient.getInstance()
                         val apiService = retrofit.create(RetrofitAPI::class.java)
@@ -87,17 +90,19 @@ class QueryFragment : Fragment() {
                             override fun onResponse(call: Call<MRResult>, response: Response<MRResult>) {
                                 if (response.isSuccessful && response.body()!!.result != -1) {
                                     val result = response.body()!!.return_object.MRCInfo
-                                    chatAdapter.addItem(Chat
-                                        (ChatType.Bot,
+                                    chatAdapter.updateItem(
+                                        chatAdapter.itemCount - 1,
                                         "${result.answer}\n답변 신뢰도: ${(result.confidence.toDouble()*100).toInt()}%",
-                                        true))
+                                        true)
                                 } else {
-                                    chatAdapter.addItem(Chat(ChatType.Bot, "단락 내에서 답변을 찾을 수 없습니다", true))
+                                    chatAdapter.updateItem(chatAdapter.itemCount - 1, "단락 내에서 답변을 찾을 수 없습니다", true)
                                 }
+                                isQuestionEnd = true
                             }
 
                             override fun onFailure(call: Call<MRResult>, t: Throwable) {
-                                chatAdapter.addItem(Chat(ChatType.Bot, "단락 내에서 답변을 찾을 수 없습니다", true))
+                                chatAdapter.updateItem(chatAdapter.itemCount - 1, "단락 내에서 답변을 찾을 수 없습니다", true)
+                                isQuestionEnd = true
                             }
                         })
                     }
@@ -114,7 +119,11 @@ class QueryFragment : Fragment() {
 
                     it.clearFocus()
                 } else {
-                    Toast.makeText(requireContext(), "최소 3글자 이상 입력해주세요", Toast.LENGTH_SHORT).show()
+                    if (isQuestionEnd) {
+                        Toast.makeText(requireContext(), "최소 3글자 이상 입력해주세요", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(requireContext(), "답변이 끝나고 입력해주세요", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         }
