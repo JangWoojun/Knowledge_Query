@@ -34,7 +34,7 @@ class QueryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
-            chatList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, true)
+            chatList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             chatList.adapter = ChatRecyclerAdapter(list)
         }
     }
