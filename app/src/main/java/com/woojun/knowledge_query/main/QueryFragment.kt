@@ -32,7 +32,7 @@ class QueryFragment : Fragment() {
     private var _binding: FragmentQueryBinding? = null
     private val binding get() = _binding!!
 
-    private val list: MutableList<Chat> = mutableListOf(Chat(ChatType.Bot, "사용하시기 앞서 우선 쿼리 기능을 사용할 글을 입력해주세요", true))
+    private val list: MutableList<Chat> = mutableListOf(Chat(ChatType.Bot, "사용하시기 앞서 우선 쿼리 기능을 사용할 글을 입력해주세요!", true))
     private val passageList: MutableList<Chat> = mutableListOf()
     private var isQuestion = false
     private var isQuestionEnd = true
@@ -57,7 +57,7 @@ class QueryFragment : Fragment() {
 
             chatList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             chatList.adapter = chatAdapter
-            chatList.addItemDecoration(SpacesItemDecoration(Space(0,  0, 0, 10, 30, 0, 0, 30), BookType.My))
+            chatList.addItemDecoration(SpacesItemDecoration(Space(0,  0, 0, 50, 0, 0, 0, 50), BookType.My))
 
             input.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
@@ -111,7 +111,7 @@ class QueryFragment : Fragment() {
                         isQuestion = true
 
                         chatAdapter.addItem(Chat(ChatType.User, "지식 쿼리를 사용할 글", false))
-                        chatAdapter.addItem(Chat(ChatType.Bot, "이제 질문을 시작해주세요", true))
+                        chatAdapter.addItem(Chat(ChatType.Bot, "이제 질문을 시작해주세요!", true))
                     }
                     input.text?.clear()
                     val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -125,6 +125,7 @@ class QueryFragment : Fragment() {
                         Toast.makeText(requireContext(), "답변이 끝나고 입력해주세요", Toast.LENGTH_SHORT).show()
                     }
                 }
+                chatList.scrollToPosition(chatAdapter.itemCount - 1)
             }
         }
     }
