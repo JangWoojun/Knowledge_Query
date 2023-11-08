@@ -111,8 +111,10 @@ data class Space(
     var left: Int,
     var right: Int,
     var bottom: Int,
+    var firstTop: Int,
     var firstLeft: Int,
-    var lastRight: Int
+    var lastRight: Int,
+    var lastBottom: Int
 )
 
 enum class BookType {
