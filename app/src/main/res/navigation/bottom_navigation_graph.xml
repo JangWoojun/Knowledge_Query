@@ -39,11 +39,6 @@
             app:destination="@id/bookInfoFragment" />
     </fragment>
     <fragment
-        android:id="@+id/setting"
-        android:name="com.woojun.knowledge_query.main.SettingFragment"
-        android:label="fragment_setting"
-        tools:layout="@layout/fragment_setting" />
-    <fragment
         android:id="@+id/bookInfoFragment"
         android:name="com.woojun.knowledge_query.main.BookInfoFragment"
         android:label="fragment_book_info"

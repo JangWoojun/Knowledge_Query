@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
                     R.id.home -> navController.navigate(R.id.home)
                     R.id.myLibrary -> navController.navigate(R.id.myLibrary)
                     R.id.query -> navController.navigate(R.id.query)
-                    R.id.setting -> navController.navigate(R.id.setting)
                 }
             }
 
