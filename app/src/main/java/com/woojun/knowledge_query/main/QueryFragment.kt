@@ -70,6 +70,53 @@ class QueryFragment : Fragment() {
                 }
             })
 
+            submitButton.setOnClickListener {
+                if (input.text.toString().length >= 3) {
+                    if (isQuestion) {
+                        chatAdapter.addItem(Chat(ChatType.User, input.text.toString()))
+
+                        val retrofit = RetrofitClient.getInstance()
+                        val apiService = retrofit.create(RetrofitAPI::class.java)
+
+                        val call = apiService.MRPost(BuildConfig.APIKEY, com.woojun.knowledge_query.util.
+                        RequestBody(
+                            Argument(input.text.toString(), passageList[0].message)
+                        ))
+
+                        call.enqueue(object : Callback<MRResult> {
+                            override fun onResponse(call: Call<MRResult>, response: Response<MRResult>) {
+                                if (response.isSuccessful && response.body()!!.result != -1) {
+                                    val result = response.body()!!.return_object.MRCInfo
+                                    chatAdapter.addItem(Chat
+                                        (ChatType.Bot,
+                                        "${result.answer}\n답변 신뢰도: ${(result.confidence.toDouble()*100).toInt()}%",
+                                        true))
+                                } else {
+                                    chatAdapter.addItem(Chat(ChatType.Bot, "단락 내에서 답변을 찾을 수 없습니다", true))
+                                }
+                            }
+
+                            override fun onFailure(call: Call<MRResult>, t: Throwable) {
+                                chatAdapter.addItem(Chat(ChatType.Bot, "단락 내에서 답변을 찾을 수 없습니다", true))
+                            }
+                        })
+                    }
+                    else {
+                        passageList.add(Chat(ChatType.Bot, input.text.toString()))
+                        isQuestion = true
+
+                        chatAdapter.addItem(Chat(ChatType.User, "지식 쿼리를 사용할 글", false))
+                        chatAdapter.addItem(Chat(ChatType.Bot, "이제 질문을 시작해주세요", true))
+                    }
+                    input.text?.clear()
+                    val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    imm.hideSoftInputFromWindow(it.windowToken, 0)
+
+                    it.clearFocus()
+                } else {
+                    Toast.makeText(requireContext(), "최소 3글자 이상 입력해주세요", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 
