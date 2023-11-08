@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -17,6 +19,9 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "BASEURL", gradleLocalProperties(rootDir).getProperty("baseUrl"))
+        buildConfigField("String", "APIKEY", gradleLocalProperties(rootDir).getProperty("apiKey"))
     }
 
     buildTypes {
@@ -26,6 +31,9 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+        buildFeatures {
+            buildConfig = true
         }
     }
     compileOptions {
