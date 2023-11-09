@@ -84,7 +84,7 @@ enum class ChatType {
 data class User(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-    val myBookList: MutableList<BookInfo>
+    var myBookList: MutableList<BookInfo>
 )
 
 data class PagerItem(
