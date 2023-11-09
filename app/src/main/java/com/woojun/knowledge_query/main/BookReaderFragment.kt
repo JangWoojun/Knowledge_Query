@@ -10,13 +10,24 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
+import com.woojun.knowledge_query.BuildConfig
 import com.woojun.knowledge_query.databinding.FragmentBookReaderBinding
+import com.woojun.knowledge_query.util.Argument
 import com.woojun.knowledge_query.util.BookInfo
+import com.woojun.knowledge_query.util.MRResult
+import com.woojun.knowledge_query.util.RetrofitAPI
+import com.woojun.knowledge_query.util.RetrofitClient
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class BookReaderFragment : Fragment() {
     private var _binding: FragmentBookReaderBinding? = null
     private val binding get() = _binding!!
     private val READ_REQUEST_CODE = 42
+
+    private var passage = ""
+    private var isAi = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,11 +52,13 @@ class BookReaderFragment : Fragment() {
             buttonBackground.bringToFront()
 
             aiButton.setOnClickListener {
-                touchButton(true)
+                isAi = true
+                touchButton()
             }
 
             dictionaryButton.setOnClickListener {
-                touchButton(false)
+                isAi = false
+                touchButton()
             }
 
             closeButton.setOnClickListener {
@@ -62,14 +75,15 @@ class BookReaderFragment : Fragment() {
         _binding = null
     }
 
-    private fun touchButton(isAi: Boolean) {
+    private fun touchButton() {
         binding.apply {
             (activity as MainActivity).changeWindow(true)
             questionBackground.visibility = View.VISIBLE
 
             if (isAi) {
                 typeText.text = "지식 쿼리 A.I"
-            } else {
+            }
+            else {
                 typeText.text = "위키 백과 A.I"
             }
         }
@@ -90,6 +104,7 @@ class BookReaderFragment : Fragment() {
                 if (text != null) {
                     bookText.text = text
                     titleText.text = item.title
+                    passage = text.replace("\\s+".toRegex(), "")
                 } else {
                     Toast.makeText(requireContext(), "지원되지 않는 파일입니다 .txt 파일을 사용해주세요", Toast.LENGTH_SHORT).show()
                 }
