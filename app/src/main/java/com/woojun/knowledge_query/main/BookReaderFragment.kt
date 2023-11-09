@@ -89,6 +89,7 @@ class BookReaderFragment : Fragment() {
                 val text = inputStream?.bufferedReader().use { it?.readText() }
                 if (text != null) {
                     bookText.text = text
+                    titleText.text = item.title
                 } else {
                     Toast.makeText(requireContext(), "지원되지 않는 파일입니다 .txt 파일을 사용해주세요", Toast.LENGTH_SHORT).show()
                 }
