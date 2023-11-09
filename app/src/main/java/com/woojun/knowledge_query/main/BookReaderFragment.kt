@@ -64,6 +64,41 @@ class BookReaderFragment : Fragment() {
                 questionBackground.visibility = View.GONE
             }
 
+            questionText.setOnEditorActionListener { _, _, _ ->
+                if (questionText.text.toString() != "") {
+                    val retrofit = RetrofitClient.getInstance()
+                    val apiService = retrofit.create(RetrofitAPI::class.java)
+
+                    val call = apiService.WKPost(BuildConfig.APIKEY, com.woojun.knowledge_query.util.
+                    RequestBody2(
+                        Argument2("hybridqa", questionText.text.toString())
+                    ))
+
+                    call.enqueue(object : Callback<WKResult> {
+                        override fun onResponse(call: Call<WKResult>, response: Response<WKResult>) {
+                            if (response.isSuccessful && response.body()!!.result != -1) {
+                                val result = response.body()!!.return_object.WiKiInfo.AnswerInfo[0].answer
+                                answerText.visibility = View.VISIBLE
+                                answerText.text = result
+                            } else {
+                                answerText.visibility = View.VISIBLE
+                                answerText.text = "찾을 수 없음"
+                            }
+                            questionText.text?.clear()
+                        }
+
+                        override fun onFailure(call: Call<WKResult>, t: Throwable) {
+                            answerText.visibility = View.VISIBLE
+                            answerText.text = "찾을 수 없음"
+                            questionText.text?.clear()
+                        }
+                    })
+                } else {
+                    Toast.makeText(requireContext(), "질문을 입력해주세요", Toast.LENGTH_SHORT).show()
+                }
+                true
+            }
+
         }
     }
 
