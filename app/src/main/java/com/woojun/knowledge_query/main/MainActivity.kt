@@ -3,6 +3,8 @@ package com.woojun.knowledge_query.main
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import com.woojun.knowledge_query.R
 import com.woojun.knowledge_query.databinding.ActivityMainBinding
@@ -39,6 +41,22 @@ class MainActivity : AppCompatActivity() {
                 bottomNavigation.visibility = View.GONE
             } else {
                 bottomNavigation.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    fun changeWindow(type: Boolean) {
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO) {
+            if (type) {
+                window.statusBarColor = ContextCompat.getColor(this, R.color.reader_sub_background_light)
+            } else {
+                window.statusBarColor = ContextCompat.getColor(this, R.color.white)
+            }
+        } else {
+            if (type) {
+                window.statusBarColor = ContextCompat.getColor(this, R.color.reader_sub_background_dark)
+            } else {
+                window.statusBarColor = ContextCompat.getColor(this, R.color.black)
             }
         }
     }
