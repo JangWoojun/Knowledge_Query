@@ -31,13 +31,13 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.Random
 
 class MyLibraryFragment : Fragment() {
     private var _binding: FragmentMyLibraryBinding? = null
     private val binding get() = _binding!!
 
     private var isMyChecked: Boolean = true
-    private var isBookmarkChecked: Boolean = false
     private var isClassicNovelChecked: Boolean = false
     private var isFairyTaleChecked: Boolean = false
     private var isPoemChecked: Boolean = false
@@ -114,10 +114,6 @@ class MyLibraryFragment : Fragment() {
                 selectButton(myButtonBackground, myButtonText, isMyChecked, BookType.My)
             }
 
-            bookmarkButton.setOnClickListener {
-                isBookmarkChecked = !isBookmarkChecked
-                selectButton(bookmarkButtonBackground, bookmarkButtonText, isBookmarkChecked, BookType.Bookmark)
-            }
 
             classicNovelButton.setOnClickListener {
                 isClassicNovelChecked = !isClassicNovelChecked
@@ -175,6 +171,19 @@ class MyLibraryFragment : Fragment() {
         _binding = null
     }
 
+    fun randomImage(): Int {
+        return when (Random().nextInt(7)) {
+            0 -> R.drawable.test_1
+            1 -> R.drawable.test_2
+            2 -> R.drawable.test_3
+            3 -> R.drawable.test_4
+            4 -> R.drawable.test_5
+            5 -> R.drawable.test_6
+            6 -> R.drawable.test_7
+            else -> R.drawable.test_6
+        }
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == READ_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
@@ -193,7 +202,7 @@ class MyLibraryFragment : Fragment() {
                             BookInfo(
                                 getFileNameFromUri(uri).toString(),
                                 "",
-                                0,
+                                randomImage(),
                                 BookType.My,
                                 "",
                                 "",
@@ -229,7 +238,7 @@ class MyLibraryFragment : Fragment() {
             ) == PackageManager.PERMISSION_GRANTED
         ) {
             val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
-            intent.type = "*/*"
+            intent.type = "text/plain"
             startActivityForResult(intent, READ_REQUEST_CODE)
         } else {
             pleasePermission()
