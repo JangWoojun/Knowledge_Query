@@ -25,7 +25,7 @@ class BookRecyclerAdapter(private val bookList: List<BookInfo>, private val type
                     if (type == BookType.Category) {
                         parent.findNavController().navigate(R.id.action_home_to_bookInfoFragment, bundle)
                     } else {
-                        parent.findNavController().navigate(R.id.action_home_to_bookReaderFragment, bundle)
+                        parent.findNavController().navigate(R.id.bookReaderFragment)
                     }
                 }
             }
