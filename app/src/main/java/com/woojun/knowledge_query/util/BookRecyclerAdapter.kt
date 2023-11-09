@@ -23,7 +23,7 @@ class BookRecyclerAdapter(private val bookList: List<BookInfo>, private val type
                     bundle.putParcelable("book info", filteredBookList[handler.adapterPosition])
 
                     if (type == BookType.Category) {
-                        parent.findNavController().navigate(R.id.action_home_to_bookInfoFragment, bundle)
+                        parent.findNavController().navigate(R.id.bookInfoFragment, bundle)
                     } else {
                         parent.findNavController().navigate(R.id.bookReaderFragment, bundle)
                     }
@@ -47,9 +47,6 @@ class BookRecyclerAdapter(private val bookList: List<BookInfo>, private val type
 
     fun selectButtonByCategory(category: Set<BookType>) {
         filteredBookList = bookList.filter { it.category in category }
-        if (BookType.Bookmark in category) {
-            filteredBookList = filteredBookList.filter { it.bookmark }
-        }
         notifyDataSetChanged()
     }
 
