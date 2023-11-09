@@ -43,4 +43,12 @@
         <item name="android:fontFamily">@font/poppins_medium</item>
     </style>
 
+    <style name="reader_button_color">
+        <item name="android:backgroundTint">#2C2D32</item>
+    </style>
+
+    <style name="reader_sub_background">
+        <item name="android:background">#21262D</item>
+    </style>
+
 </resources>
