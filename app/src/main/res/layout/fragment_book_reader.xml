@@ -52,7 +52,7 @@
                     android:layout_marginVertical="3dp"
                     android:layout_marginStart="7dp"
                     android:fontFamily="@font/poppins_semibold"
-                    android:text="지식 쿼리 A.I"
+                    android:text="위키 백과 A.I"
                     android:textColor="#676E85"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -65,8 +65,9 @@
         </androidx.cardview.widget.CardView>
 
 
-        <EditText
-            android:hint="질문 내용을 입력해주세요"
+        <com.google.android.material.textfield.TextInputEditText
+            android:imeOptions="actionSearch"
+            android:hint="궁금한 것을 입력해주세요"
             android:textSize="20sp"
             android:id="@+id/question_text"
             android:layout_width="match_parent"
@@ -157,32 +158,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <LinearLayout
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:gravity="center"
-                android:id="@+id/ai_button"
-                android:layout_width="50dp"
-                android:layout_height="50dp">
-
-                <androidx.cardview.widget.CardView
-                    style="@style/reader_button_color"
-                    android:layout_width="42dp"
-                    android:layout_height="42dp"
-                    app:cardCornerRadius="10dp">
-
-                    <ImageView
-                        style="@style/ImageColor"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/query_icon" />
-
-                </androidx.cardview.widget.CardView>
-
-
-            </LinearLayout>
 
             <TextView
                 android:id="@+id/title_text"
@@ -195,7 +170,7 @@
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/dictionary_button"
-                app:layout_constraintStart_toEndOf="@+id/ai_button"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
