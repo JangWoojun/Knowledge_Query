@@ -100,7 +100,7 @@ class HomeFragment : Fragment() {
                 adapter.filterByCategory(My)
                 recentlyList.adapter = adapter
             }
-            recentlyList.addItemDecoration(SpacesItemDecoration(Space(0,  0, 0, 16, 0, 16, 16, 0), My))
+            recentlyList.addItemDecoration(SpacesItemDecoration(Space(0,  10, 10, 16, 0, 10, 10, 0), My))
 
             classicNovelButton.setOnClickListener {
                 categoryButtonClick(ClassicNovel)
