@@ -86,6 +86,7 @@
 
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/answer_text"
             style="@style/TextColor"
             android:layout_width="match_parent"
