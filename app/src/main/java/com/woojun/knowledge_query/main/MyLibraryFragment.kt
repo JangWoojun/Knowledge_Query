@@ -1,10 +1,16 @@
 package com.woojun.knowledge_query.main
 
+import android.Manifest
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
+import android.provider.OpenableColumns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +22,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.woojun.knowledge_query.R
 import com.woojun.knowledge_query.databinding.FragmentMyLibraryBinding
 import com.woojun.knowledge_query.util.AppDatabase
+import com.woojun.knowledge_query.util.BookInfo
 import com.woojun.knowledge_query.util.BookRecyclerAdapter
 import com.woojun.knowledge_query.util.BookType
 import com.woojun.knowledge_query.util.Space
@@ -40,6 +47,10 @@ class MyLibraryFragment : Fragment() {
 
     private val selectCategorySet = mutableSetOf<BookType>()
 
+    private val READ_REQUEST_CODE = 42
+
+    private var adapter = BookRecyclerAdapter(listOf(), BookType.My)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -60,7 +71,7 @@ class MyLibraryFragment : Fragment() {
             CoroutineScope(Dispatchers.IO).launch {
                 val db = AppDatabase.getDatabase(requireContext())
                 val list = db?.userDao()!!.getUser().myBookList
-                val adapter = BookRecyclerAdapter(list, BookType.Category)
+                adapter = BookRecyclerAdapter(list, BookType.My)
 
                 withContext(Dispatchers.Main) {
                     myButtonBackground.backgroundTintList = ContextCompat.getColorStateList(view.context, R.color.primary)
@@ -75,9 +86,14 @@ class MyLibraryFragment : Fragment() {
 
             }
 
+            addButton.setOnClickListener {
+                pleasePermission()
+            }
+
             searchButton.setOnClickListener {
                 textView.visibility = View.GONE
                 searchButton.visibility = View.GONE
+                addButton.visibility = View.GONE
                 searchInputButton.visibility = View.VISIBLE
 
                 bookNameInput.requestFocus()
@@ -142,6 +158,7 @@ class MyLibraryFragment : Fragment() {
 
                 textView.visibility = View.VISIBLE
                 searchButton.visibility = View.VISIBLE
+                addButton.visibility = View.VISIBLE
                 searchInputButton.visibility = View.GONE
 
                 true
@@ -152,6 +169,108 @@ class MyLibraryFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == READ_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            data?.data?.let { uri ->
+                val inputStream = requireContext().contentResolver.openInputStream(uri)
+                val text = inputStream?.bufferedReader().use { it?.readText() }
+
+                if (text != null) {
+                    CoroutineScope(Dispatchers.IO).launch {
+                        val db = AppDatabase.getDatabase(requireContext())
+                        val userDao = db?.userDao()
+                        val userBookList = userDao!!.getUser().myBookList
+
+                        userBookList.add(
+                            BookInfo(
+                                getFileNameFromUri(uri).toString(),
+                                "",
+                                0,
+                                BookType.My,
+                                "",
+                                "",
+                                uri.toString(),
+                                true,
+                                bookmark = false
+                            )
+                        )
+
+                        val user = userDao.getUser()
+                        user.myBookList = userBookList
+
+                        userDao.updateUser(user)
+                        adapter = BookRecyclerAdapter(userBookList, BookType.My)
+
+                        withContext(Dispatchers.Main) {
+                            binding.apply {
+                                bookList.adapter = adapter
+                                bookList.adapter?.notifyDataSetChanged()
+                            }
+                        }
+                    }
+                }
+                inputStream?.close()
+            }
+        }
+    }
+
+    private fun openFile() {
+        if (ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
+            intent.type = "*/*"
+            startActivityForResult(intent, READ_REQUEST_CODE)
+        } else {
+            pleasePermission()
+        }
+    }
+
+    private fun pleasePermission() {
+        val permission = Manifest.permission.READ_EXTERNAL_STORAGE
+        val granted = PackageManager.PERMISSION_GRANTED
+
+        if (ContextCompat.checkSelfPermission(requireContext(), permission) != granted) {
+            requestPermissions(arrayOf(permission), READ_REQUEST_CODE)
+        } else {
+            openFile()
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        if (requestCode == READ_REQUEST_CODE) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                openFile()
+            } else {
+                pleasePermission()
+            }
+        }
+    }
+
+    fun getFileNameFromUri(uri: Uri): String? {
+        val contentResolver = context?.contentResolver
+        val cursor = contentResolver?.query(uri, null, null, null, null)
+        cursor?.use {
+            if (it.moveToFirst()) {
+                val displayNameIndex = it.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+                if (displayNameIndex != -1) {
+                    val displayName = it.getString(displayNameIndex)
+                    return displayName
+                }
+            }
+        }
+        return null
     }
 
     private fun showKeyboard(context: Context, view: View) {
@@ -181,7 +300,7 @@ class MyLibraryFragment : Fragment() {
                         val db = AppDatabase.getDatabase(requireContext())
                         val list = db?.userDao()!!.getUser().myBookList
 
-                        val adapter = BookRecyclerAdapter(list, BookType.Category)
+                        val adapter = BookRecyclerAdapter(list, BookType.My)
 
                         withContext(Dispatchers.Main) {
                             bookList.layoutManager = GridLayoutManager(requireContext(), 2)
