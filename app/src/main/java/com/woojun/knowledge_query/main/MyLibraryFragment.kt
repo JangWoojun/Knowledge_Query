@@ -86,6 +86,10 @@ class MyLibraryFragment : Fragment() {
 
             }
 
+            bookList.addItemDecoration(SpacesItemDecoration(Space(0,  10, 10, 16, 0, 10, 10, 0),
+                BookType.My
+            ))
+
             addButton.setOnClickListener {
                 pleasePermission()
             }
