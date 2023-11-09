@@ -12,4 +12,9 @@ interface RetrofitAPI {
         @Body requestBody: RequestBody
     ): Call<MRResult>
 
+    @POST("WikiQA")
+    fun WKPost(
+        @Header("Authorization") accessToken: String,
+        @Body requestBody: RequestBody2
+    ): Call<WKResult>
 }

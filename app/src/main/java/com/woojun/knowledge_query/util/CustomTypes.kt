@@ -43,12 +43,38 @@ class TypeConverter {
     }
 }
 
-data class MRResult(
+data class WKResult(
     val result: Int,
     val return_object: ReturnObject
 )
 
+data class AnswerInfo(
+    val answer: String,
+    val confidence: Int,
+    val rank: Int,
+    val url: List<String>
+)
+
+data class IRInfo(
+    val sent: String,
+    val url: String,
+    val wiki_title: String
+)
+data class WiKiInfo(
+    val AnswerInfo: List<AnswerInfo>,
+    val IRInfo: List<IRInfo>
+)
+
 data class ReturnObject(
+    val WiKiInfo: WiKiInfo
+)
+
+data class MRResult(
+    val result: Int,
+    val return_object: MRCReturnObject
+)
+
+data class MRCReturnObject(
     val MRCInfo: MRCInfo
 )
 
@@ -56,9 +82,18 @@ data class RequestBody(
     val argument: Argument
 )
 
+data class RequestBody2(
+    val argument: Argument2
+)
+
 data class Argument(
     val question: String,
     val passage: String
+)
+
+data class Argument2(
+    val type: String,
+    val question: String
 )
 
 data class MRCInfo(
