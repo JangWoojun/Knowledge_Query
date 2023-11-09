@@ -16,7 +16,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.woojun.knowledge_query.R
@@ -36,16 +35,6 @@ import java.util.Random
 class MyLibraryFragment : Fragment() {
     private var _binding: FragmentMyLibraryBinding? = null
     private val binding get() = _binding!!
-
-    private var isMyChecked: Boolean = true
-    private var isClassicNovelChecked: Boolean = false
-    private var isFairyTaleChecked: Boolean = false
-    private var isPoemChecked: Boolean = false
-    private var isSocialNewsChecked: Boolean = false
-    private var isItNewsChecked: Boolean = false
-    private var isDailyNewsChecked: Boolean = false
-
-    private val selectCategorySet = mutableSetOf<BookType>()
 
     private val READ_REQUEST_CODE = 42
 
@@ -74,14 +63,8 @@ class MyLibraryFragment : Fragment() {
                 adapter = BookRecyclerAdapter(list, BookType.My)
 
                 withContext(Dispatchers.Main) {
-                    myButtonBackground.backgroundTintList = ContextCompat.getColorStateList(view.context, R.color.primary)
-                    myButtonText.setTextColor(resources.getColor(R.color.white, null))
-
                     bookList.layoutManager = GridLayoutManager(requireContext(), 2)
                     bookList.adapter = adapter
-
-                    selectCategorySet.add(BookType.My)
-                    adapter.selectButtonByCategory(selectCategorySet)
                 }
 
             }
@@ -109,47 +92,29 @@ class MyLibraryFragment : Fragment() {
                 showKeyboard(requireContext(), bookNameInput)
             }
 
-            myButton.setOnClickListener {
-                isMyChecked = !isMyChecked
-                selectButton(myButtonBackground, myButtonText, isMyChecked, BookType.My)
-            }
-
-
-            classicNovelButton.setOnClickListener {
-                isClassicNovelChecked = !isClassicNovelChecked
-                selectButton(classicNovelButtonBackground, classicNovelButtonText, isClassicNovelChecked, BookType.ClassicNovel)
-            }
-
-            fairyTaleButton.setOnClickListener {
-                isFairyTaleChecked = !isFairyTaleChecked
-                selectButton(fairyTaleButtonBackground, fairyTaleButtonText, isFairyTaleChecked, BookType.FairyTale)
-            }
-
-            poemButton.setOnClickListener {
-                isPoemChecked = !isPoemChecked
-                selectButton(poemButtonBackground, poemButtonText, isPoemChecked, BookType.Poem)
-            }
-
-            socialNewsButton.setOnClickListener {
-                isSocialNewsChecked = !isSocialNewsChecked
-                selectButton(socialNewsButtonBackground, socialNewsButtonText, isSocialNewsChecked, BookType.SocialNews)
-            }
-
-            itNewsButton.setOnClickListener {
-                isItNewsChecked = !isItNewsChecked
-                selectButton(itNewsButtonBackground, itNewsButtonText, isItNewsChecked, BookType.ItNews)
-            }
-
-            dailyNewsButton.setOnClickListener {
-                isDailyNewsChecked = !isDailyNewsChecked
-                selectButton(dailyNewsButtonBackground, dailyNewsButtonText, isDailyNewsChecked, BookType.DailyNews)
-            }
-
             bookList.addItemDecoration(SpacesItemDecoration(Space(0,  0, 0, 16, 0, 16, 16, 0), BookType.My))
 
             bookNameLayout.setOnClickListener {
                 bookNameInput.requestFocus()
                 showKeyboard(requireContext(), bookNameInput)
+            }
+
+            bookNameInput.setOnEditorActionListener { _, _, _ ->
+                CoroutineScope(Dispatchers.IO).launch {
+                    val db = AppDatabase.getDatabase(requireContext())
+                    val list = db?.userDao()!!.getUser().myBookList
+
+                    adapter = BookRecyclerAdapter(list.filter { it.title.contains(bookNameInput.text.toString()) }, BookType.My)
+
+                    withContext(Dispatchers.Main) {
+                        bookList.layoutManager = GridLayoutManager(requireContext(), 2)
+                        bookList.adapter = adapter
+                        adapter.notifyDataSetChanged()
+                    }
+
+                }
+
+                true
             }
 
             container.setOnTouchListener { it, _ ->
@@ -290,49 +255,6 @@ class MyLibraryFragment : Fragment() {
     private fun showKeyboard(context: Context, view: View) {
         val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.showSoftInput(view, 0)
-    }
-
-    private fun selectButton(view: View, text: TextView, type: Boolean, category: BookType) {
-        binding.apply {
-            val colorChangeDuration = 250L
-            val fadeOut = ObjectAnimator.ofFloat(view, "alpha", 1f, 0f).setDuration(colorChangeDuration / 2)
-            val fadeIn = ObjectAnimator.ofFloat(view, "alpha", 0f, 1f).setDuration(colorChangeDuration / 2)
-
-            fadeOut.addListener(object : AnimatorListenerAdapter() {
-                override fun onAnimationEnd(animation: Animator) {
-                    if (type) {
-                        view.backgroundTintList = ContextCompat.getColorStateList(view.context, R.color.primary)
-                        text.setTextColor(resources.getColor(R.color.white, null))
-                        selectCategorySet.add(category)
-                    }
-                    else {
-                        view.backgroundTintList = ContextCompat.getColorStateList(view.context, R.color.toggle_backgroundColor)
-                        text.setTextColor(resources.getColor(R.color.text_black, null))
-                        selectCategorySet.remove(category)
-                    }
-                    CoroutineScope(Dispatchers.IO).launch {
-                        val db = AppDatabase.getDatabase(requireContext())
-                        val list = db?.userDao()!!.getUser().myBookList
-
-                        val adapter = BookRecyclerAdapter(list, BookType.My)
-
-                        withContext(Dispatchers.Main) {
-                            bookList.layoutManager = GridLayoutManager(requireContext(), 2)
-                            bookList.adapter = adapter
-                            adapter.selectButtonByCategory(selectCategorySet)
-                        }
-
-                    }
-                    fadeIn.start()
-                }
-            })
-
-            fadeOut.start()
-
-            view.animate().scaleX(0.9f).scaleY(0.9f).setDuration(150).withEndAction {
-                view.animate().scaleX(1f).scaleY(1f).setDuration(150).start()
-            }.start()
-        }
     }
 
 }
