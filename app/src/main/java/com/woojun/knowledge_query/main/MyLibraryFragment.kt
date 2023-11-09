@@ -181,6 +181,7 @@ class MyLibraryFragment : Fragment() {
             data?.data?.let { uri ->
                 val inputStream = requireContext().contentResolver.openInputStream(uri)
                 val text = inputStream?.bufferedReader().use { it?.readText() }
+                context?.contentResolver?.takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION)
 
                 if (text != null) {
                     CoroutineScope(Dispatchers.IO).launch {
@@ -262,7 +263,7 @@ class MyLibraryFragment : Fragment() {
         }
     }
 
-    fun getFileNameFromUri(uri: Uri): String? {
+    private fun getFileNameFromUri(uri: Uri): String? {
         val contentResolver = context?.contentResolver
         val cursor = contentResolver?.query(uri, null, null, null, null)
         cursor?.use {
