@@ -37,6 +37,22 @@ class BookReaderFragment : Fragment() {
         binding.apply {
             readFile()
 
+            questionBackground.bringToFront()
+            buttonBackground.bringToFront()
+
+            aiButton.setOnClickListener {
+                touchButton(true)
+            }
+
+            dictionaryButton.setOnClickListener {
+                touchButton(false)
+            }
+
+            closeButton.setOnClickListener {
+                (activity as MainActivity).changeWindow(false)
+                questionBackground.visibility = View.GONE
+            }
+
         }
     }
 
@@ -46,6 +62,18 @@ class BookReaderFragment : Fragment() {
         _binding = null
     }
 
+    private fun touchButton(isAi: Boolean) {
+        binding.apply {
+            (activity as MainActivity).changeWindow(true)
+            questionBackground.visibility = View.VISIBLE
+
+            if (isAi) {
+                typeText.text = "지식 쿼리 A.I"
+            } else {
+                typeText.text = "위키 백과 A.I"
+            }
+        }
+    }
 
     private fun readFile() {
         if (ContextCompat.checkSelfPermission(
