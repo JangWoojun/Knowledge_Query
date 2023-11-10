@@ -1,9 +1,6 @@
 package com.woojun.knowledge_query.main
 
 import android.Manifest
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
-import android.animation.ObjectAnimator
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -245,7 +242,7 @@ class MyLibraryFragment : Fragment() {
                 val displayNameIndex = it.getColumnIndex(OpenableColumns.DISPLAY_NAME)
                 if (displayNameIndex != -1) {
                     val displayName = it.getString(displayNameIndex)
-                    return displayName
+                    return displayName.dropLast(4).trim()
                 }
             }
         }
