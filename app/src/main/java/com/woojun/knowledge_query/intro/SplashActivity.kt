@@ -5,13 +5,18 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.lifecycle.ViewModelProvider
 import com.woojun.knowledge_query.R
 import com.woojun.knowledge_query.main.MainActivity
+import com.woojun.knowledge_query.util.BookViewModel
 import com.woojun.knowledge_query.util.MyApplication
 
 class SplashActivity : AppCompatActivity() {
+
+    private lateinit var viewModel: BookViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
@@ -22,6 +27,9 @@ class SplashActivity : AppCompatActivity() {
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
+
+        viewModel = ViewModelProvider(this)[BookViewModel::class.java]
+        viewModel.fetchData()
 
         Handler().postDelayed({
             if (MyApplication.prefs.isFirst()) {
