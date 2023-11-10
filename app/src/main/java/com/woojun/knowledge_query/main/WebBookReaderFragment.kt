@@ -114,6 +114,7 @@ class WebBookReaderFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        (activity as MainActivity).changeWindow(false)
         (activity as MainActivity).hideBottomNavigation(false)
         _binding = null
     }
