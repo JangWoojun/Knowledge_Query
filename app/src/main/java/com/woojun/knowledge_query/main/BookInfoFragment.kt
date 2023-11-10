@@ -34,9 +34,7 @@ class BookInfoFragment : Fragment() {
             val arguments = arguments
             val item = arguments?.getParcelable<BookInfo>("book info")
 
-            Glide.with(binding.root.context)
-                .load(item!!.image)
-                .into(image)
+            image.setImageResource(item!!.image)
             title.text = item.title
             writer.text = item.writer
             overviewText.text = item.overview
