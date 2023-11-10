@@ -46,6 +46,9 @@
         <action
             android:id="@+id/action_bookInfoFragment_to_bookReaderFragment"
             app:destination="@id/bookReaderFragment" />
+        <action
+            android:id="@+id/action_bookInfoFragment_to_webBookReaderFragment"
+            app:destination="@id/webBookReaderFragment" />
     </fragment>
     <fragment
         android:id="@+id/bookReaderFragment"
@@ -61,4 +64,9 @@
             android:id="@+id/action_searchFragment_to_bookInfoFragment"
             app:destination="@id/bookInfoFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/webBookReaderFragment"
+        android:name="com.woojun.knowledge_query.main.WebBookReaderFragment"
+        android:label="fragment_web_book_reader"
+        tools:layout="@layout/fragment_web_book_reader" />
 </navigation>
