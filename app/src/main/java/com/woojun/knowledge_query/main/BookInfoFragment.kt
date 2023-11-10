@@ -5,14 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.woojun.knowledge_query.R
 import com.woojun.knowledge_query.databinding.FragmentBookInfoBinding
-import com.woojun.knowledge_query.util.AppDatabase
 import com.woojun.knowledge_query.util.BookInfo
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class BookInfoFragment : Fragment() {
     private var _binding: FragmentBookInfoBinding? = null
@@ -20,7 +17,6 @@ class BookInfoFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        (activity as MainActivity).hideBottomNavigation(true)
     }
 
     override fun onCreateView(
@@ -38,18 +34,24 @@ class BookInfoFragment : Fragment() {
             val arguments = arguments
             val item = arguments?.getParcelable<BookInfo>("book info")
 
-            image.setImageResource(item!!.image)
+            Glide.with(binding.root.context)
+                .load(item!!.image)
+                .into(image)
             title.text = item.title
             writer.text = item.writer
             overviewText.text = item.overview
             aboutAuthorText.text = item.aboutAuthor
 
+            readButton.setOnClickListener {
+                val bundle = Bundle()
+                bundle.putParcelable("book info", item)
+                findNavController().navigate(R.id.action_bookInfoFragment_to_webBookReaderFragment, bundle)
+            }
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        (activity as MainActivity).hideBottomNavigation(false)
         _binding = null
     }
 
