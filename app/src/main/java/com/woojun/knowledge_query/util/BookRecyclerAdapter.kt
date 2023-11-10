@@ -51,7 +51,6 @@ class BookRecyclerAdapter(private val bookList: List<BookInfo>, private val type
             binding.apply {
                 title.text = bookInfo.title
                 writer.text = bookInfo.writer
-                image.setImageResource(bookInfo.image)
                 Glide.with(binding.root.context)
                     .load(bookInfo.image)
                     .into(image)
