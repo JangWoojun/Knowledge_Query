@@ -198,30 +198,6 @@
 
                 </androidx.cardview.widget.CardView>
 
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/download_button"
-                    app:cardCornerRadius="10dp"
-                    android:layout_marginStart="6dp"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    app:strokeWidth="0.8dp"
-                    android:backgroundTint="@color/white"
-                    app:strokeColor="@color/sub_text"
-                    android:layout_height="55dp">
-
-                    <TextView
-                        android:textColor="@color/sub_text"
-                        android:gravity="center"
-                        android:layout_gravity="center"
-                        android:textSize="14sp"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:text="다운로드"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                </com.google.android.material.card.MaterialCardView>
-                
                 
             </LinearLayout>
 
