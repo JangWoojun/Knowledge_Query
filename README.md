@@ -1,6 +1,6 @@
 # Knowledge_Query
 > 지식 쿼리
-![thumbnail](https://github.com/JangWoojun/Knowledge_Query/assets/102157871/5b4df94e-7a84-4b0f-a096-9d86d3d95a96)
+![thumbnail](https://github.com/JangWoojun/Knowledge_Query-Original/assets/102157871/5b4df94e-7a84-4b0f-a096-9d86d3d95a96)
 
 
 ## 프로젝트 소개
@@ -25,14 +25,14 @@ https://www.youtube.com/watch?v=jjeG2BGt5ns
 
 ### 스샷
 
-<img src="https://github.com/JangWoojun/Knowledge_Query/assets/102157871/1af28e68-41b4-4d17-9bdf-1fc5833f48ac" width="40%" height="40%">
-<img src="https://github.com/JangWoojun/Knowledge_Query/assets/102157871/c5885cb5-3f7e-4fd8-85e8-e06720375b86" width="40%" height="40%">
+<img src="https://github.com/JangWoojun/Knowledge_Query-Original/assets/102157871/1af28e68-41b4-4d17-9bdf-1fc5833f48ac" width="40%" height="40%">
+<img src="https://github.com/JangWoojun/Knowledge_Query-Original/assets/102157871/c5885cb5-3f7e-4fd8-85e8-e06720375b86" width="40%" height="40%">
 <br><br>
 
-<img src="https://github.com/JangWoojun/Knowledge_Query/assets/102157871/1513d606-7d48-4e6a-bb5a-845f933ecf1c" width="20%" height="20%">
-<img src="https://github.com/JangWoojun/Knowledge_Query/assets/102157871/812b652b-15b3-42bd-b9a1-02ada802af4e" width="20%" height="20%">
-<img src="https://github.com/JangWoojun/Knowledge_Query/assets/102157871/3704650b-0348-45f6-a450-074d225a20b9" width="20%" height="20%">
-<img src="https://github.com/JangWoojun/Knowledge_Query/assets/102157871/0d3a9a45-3f87-4edd-9389-b9ababbb512f" width="20%" height="20%">
+<img src="https://github.com/JangWoojun/Knowledge_Query-Original/assets/102157871/1513d606-7d48-4e6a-bb5a-845f933ecf1c" width="20%" height="20%">
+<img src="https://github.com/JangWoojun/Knowledge_Query-Original/assets/102157871/812b652b-15b3-42bd-b9a1-02ada802af4e" width="20%" height="20%">
+<img src="https://github.com/JangWoojun/Knowledge_Query-Original/assets/102157871/3704650b-0348-45f6-a450-074d225a20b9" width="20%" height="20%">
+<img src="https://github.com/JangWoojun/Knowledge_Query-Original/assets/102157871/0d3a9a45-3f87-4edd-9389-b9ababbb512f" width="20%" height="20%">
 
 
 
