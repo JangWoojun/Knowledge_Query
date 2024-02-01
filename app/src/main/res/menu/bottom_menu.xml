@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:title="홈"
+        android:icon="@drawable/home_icon"
+        android:id="@+id/home"
+        app:cnb_iconColor="@color/primary"
+        app:showAsAction="withText" />
+
+    <item android:title="내 서재"
+        android:icon="@drawable/book_icon"
+        android:id="@+id/myLibrary"
+        app:cnb_iconColor="@color/primary"
+        app:showAsAction="withText" />
+
+    <item android:title="질문하기"
+        android:icon="@drawable/query_icon"
+        android:id="@+id/query"
+        app:cnb_iconColor="@color/primary"
+        app:showAsAction="withText" />
+
+
+</menu>
