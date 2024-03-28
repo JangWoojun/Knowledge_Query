@@ -8,7 +8,7 @@
 - 플랫폼 : 안드로이드/모바일
 - 제작 인원 : 1 인 (개인 프로젝트)
 - 제작 기간 : 14 일 (2023/10/29 ~ 2022/11/10)
-- 사용 기술 : Kotlin, XML, ViewBinding, Firebase, Glide, Room, Lottie, Retrofit2
+- 사용 기술 : Kotlin, XML, ViewBinding, Firebase, Glide, Room, Retrofit2
 
 현재 많은 초중고 학생들과 MZ세대들은 낮아진 문해력과 긴 글 까막눈을 호소하고 있으며<br>
 제 주위에도 많은 친구들이 수행 평가나 과제를 하기 위해 원하는 답을 긴 글에서 보고 있습니다<br>
